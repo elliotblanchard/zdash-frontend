@@ -1,6 +1,6 @@
 const transactionReducer = (state = { transactions: []}, action) => {
 
-    return state
+    return action.payload
 
 }
 

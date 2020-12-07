@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {fetchTransactions} from './actions/fetchTransactions'
 
 class App extends React.Component {
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/v1/transactions')
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+    this.props.fetchTransactions({type: 'PERIOD', payload: {duration: 'Day'} })
   }
 
   render () {
@@ -18,8 +17,10 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  
-}
+// const mapStateToProps = (state) => {
+//  return {
+//    transactions: state.transactions()
+//  }
+//}
 
-export default connect(mapStateToProps)(App)
+export default connect(null, {fetchTransactions})(App)
