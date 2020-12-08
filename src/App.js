@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {fetchTransactions} from './actions/fetchTransactions'
+import TransactionsContainer from './containers/TransactionsContainer'
+//import {fetchTransactions} from './actions/fetchTransactions'
 
 class App extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchTransactions({type: 'PERIOD', payload: {duration: 'Day'} })
-  }
+  //componentDidMount() {
+  //  this.props.fetchTransactions({type: 'PERIOD', payload: {duration: 'Day'} })
+  //}
 
   render () {
     return (
       <div className="App">
-        App
+        <TransactionsContainer/>
       </div>
     );
   }
@@ -23,4 +24,4 @@ class App extends React.Component {
 //  }
 //}
 
-export default connect(null, {fetchTransactions})(App)
+export default App

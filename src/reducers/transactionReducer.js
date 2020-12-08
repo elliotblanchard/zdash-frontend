@@ -1,7 +1,11 @@
 const transactionReducer = (state = { transactions: []}, action) => {
 
-    return action.payload
-
+    switch (action.type) {
+        case 'FETCH_TRANSACTIONS':
+            return {transactions: action.payload}
+        default:
+            return state
+    }
 }
 
 export default transactionReducer;

@@ -1,13 +1,10 @@
-export const fetchTransactions = (action) => {
-
-   return action
-
-   // return (dispatch) => {
-   //     dispatch({ type: 'PERIOD'})
-   //     fetch('https://learn-co-curriculum.github.io/cat-api/cats.json').then(response => {
-   //       return response.json()
-   //     }).then(responseJSON => {
-   //       dispatch({ type: 'ADD_CATS', cats: responseJSON.images })
-   //     })
-   //   }
+export function fetchTransactions() {
+   return (dispatch) => {
+      fetch('http://localhost:3000/api/v1/transactions')
+      .then(resp => resp.json())
+      .then(transactions => dispatch({
+         type: 'FETCH_TRANSACTIONS',
+         payload: transactions
+      }))
+   }
 }
