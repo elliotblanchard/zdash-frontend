@@ -14,7 +14,7 @@ class TransactionsContainer extends React.Component {
     render() {
         return (
             <div>
-                <TransactionsInput/>
+                <TransactionsInput transactions={this.props.transactions}/>
                 <Transactions transactions={this.props.transactions}/>
             </div>
         )
