@@ -1,12 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchTransactions } from '../actions/fetchTransactions'
 
 class TransactionsInput extends React.Component {
-
-    // How do you set up radio buttons so that 
-    // the active time period is already checked
-    // (this is probably passsing a prop that shows the time period
-    // 'hour' etc that then sets the initial state of the form,
-    // and thus the checked item)
     
     state = {time: 'day'} // THIS should be set via a prop!
 
@@ -16,11 +12,17 @@ class TransactionsInput extends React.Component {
         })
     }
 
+    handleSubmit = (event) => {
+        // Create action for a specific time period
+        event.preventDefault()
+        this.props.fetchTransactions(this.state)
+    }
+
     render() {
         return (
             <div>
                 Choose time period:
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         <input 
                             type="radio" 
@@ -60,11 +62,12 @@ class TransactionsInput extends React.Component {
                             onChange={this.handleChange}
                         />
                         Day
-                   </label>                   
+                   </label>    
+                   <input type="submit"/>             
                 </form>
             </div>    
         )
     }
 }
 
-export default TransactionsInput
+export default connect(null,{fetchTransactions})(TransactionsInput)
