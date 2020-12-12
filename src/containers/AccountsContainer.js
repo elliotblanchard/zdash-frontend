@@ -16,7 +16,7 @@ class AccountsContainer extends React.Component {
             <div>
                 {/* Why does prop have to be doubled? */}
                 <Accounts accounts={this.props.accounts.accounts}/>
-                <Account />
+                <Account account={this.props.accounts.accounts[0]}/>
             </div>
         )
     }

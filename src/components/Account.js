@@ -1,9 +1,9 @@
 import React from 'react'
 
- const Account = ({account}) => {
+ const Account = (account) => {
     return (
         <div>
-      <h3>Account: </h3>
+      <h3>Account: {account ? account.address : null}</h3>
                 <div>
 
                 </div>          

@@ -10,9 +10,9 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <Route path='/transactions' component={TransactionsContainer} />
-        <Route path='/accounts' component={AccountsContainer} />
-        <Route path='/network' component={NetworksContainer} />
+        <Route exact path='/' component={TransactionsContainer} />
+        <Route exact path='/accounts' component={AccountsContainer} />
+        <Route exact path='/network' component={NetworksContainer} />
       </div>
     );
   }
