@@ -3,6 +3,7 @@ import { combineReducers } from "redux";
 const rootReducer = combineReducers({
     transactions: transactionsReducer,
     accounts: accountsReducer,
+    accountDetail: accountDetailReducer,
     networks: networksReducer
   });
    
@@ -21,6 +22,15 @@ function accountsReducer(state = { accounts: []}, action) {
     switch (action.type) {
         case 'FETCH_ACCOUNTS':
             return {accounts: action.payload}
+        default:
+            return state
+    }
+}
+
+function accountDetailReducer(state = { accountDetail: []}, action) {
+    switch (action.type) {
+        case 'FETCH_ACCOUNT_DETAIL':
+            return {accountDetail: action.payload}
         default:
             return state
     }

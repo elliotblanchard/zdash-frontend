@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Route} from 'react-router-dom'
 import {fetchAccounts} from '../actions/fetchAccounts'
 import Accounts from '../components/Accounts'
-import Account from '../components/Account'
 
 class AccountsContainer extends React.Component {
   
@@ -16,7 +15,6 @@ class AccountsContainer extends React.Component {
             <div>
                 {/* Why does prop have to be doubled? */}
                 <Accounts accounts={this.props.accounts.accounts}/>
-                <Account account={this.props.accounts.accounts[0]}/>
             </div>
         )
     }
