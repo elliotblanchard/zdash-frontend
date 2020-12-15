@@ -1,7 +1,6 @@
 import React from 'react'
 
  const AccountDetail = (accountDetail) => {
-   console.log(accountDetail)
     return (
         <div>
           <h3>Address: {accountDetail.accountDetail.address}</h3>

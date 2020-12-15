@@ -8,7 +8,7 @@ import Transactions from '../components/Transactions'
 class TransactionsContainer extends React.Component {
   
     componentDidMount() {
-        this.props.fetchTransactions()
+        this.props.fetchTransactions('day')
     }
 
     render() {

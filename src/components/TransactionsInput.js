@@ -15,7 +15,7 @@ class TransactionsInput extends React.Component {
     handleSubmit = (event) => {
         // Create action for a specific time period
         event.preventDefault()
-        this.props.fetchTransactions(this.state)
+        this.props.fetchTransactions(this.state.time)
     }
 
     render() {
