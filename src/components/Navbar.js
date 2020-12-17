@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div>
             Navbar 
-            <Link to={`/transactions`}>Transactions</Link>             
+            <Link to={`/`}>Transactions</Link>             
             <Link to={`/accounts`}>Accounts</Link>
             <Link to={`/network`}>Network</Link>        
         </div>
