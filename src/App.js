@@ -12,7 +12,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
+      <div class="container" className="App">
         <Navbar/>
         <Switch>
           <Route exact path='/' component={TransactionsContainer} />
