@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
         <div>
             <Row>
                 <Col>
-                    <Jumbotron>
+                    <Jumbotron className="h-99">
                     <h1>All transactions</h1>
                     <p>
                         Stacked bar
@@ -18,7 +18,7 @@ import Col from 'react-bootstrap/Col'
             </Row>     
             <Row>
                 <Col>                      
-                    <Jumbotron>
+                    <Jumbotron className="h-99">
                     <h1>Percentage of total</h1>
                     <p>
                         Bump
@@ -28,7 +28,7 @@ import Col from 'react-bootstrap/Col'
             </Row>  
             <Row>
                 <Col>                      
-                    <Jumbotron>
+                    <Jumbotron className="h-99">
                     <h1>Shielded only</h1>
                     <p>
                         Stacked bar
@@ -36,7 +36,7 @@ import Col from 'react-bootstrap/Col'
                     </Jumbotron>   
                 </Col>  
                 <Col>                      
-                    <Jumbotron>
+                    <Jumbotron className="h-99">
                     <h1>Percentage of total period</h1>
                     <p>
                         Pie
