@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/fetchTransactions'
 
@@ -31,17 +33,18 @@ class TransactionsInput extends React.Component {
     render() {
         return (
             <div>
-                <Navbar bg="dark" variant="dark" expand="sm">
-                    <Button variant="dark" size="sm" value="year" onClick={this.handleClick}>
+                <Navbar bg="light" expand="sm">
+                    <Navbar.Text>Time period: </Navbar.Text>                    
+                    <Button variant="light" size="sm" value="year" onClick={this.handleClick}>
                         Year
                     </Button>
-                    <Button variant="dark" size="sm" value="month" onClick={this.handleClick}>
+                    <Button variant="light" size="sm" value="month" onClick={this.handleClick}>
                         Month
                     </Button>
-                    <Button variant="dark" size="sm" value="week" onClick={this.handleClick}>
+                    <Button variant="light" size="sm" value="week" onClick={this.handleClick}>
                         Week
                     </Button>
-                    <Button variant="dark" size="sm" value="day" onClick={this.handleClick}>
+                    <Button variant="light" size="sm" value="day" onClick={this.handleClick}>
                         Day
                     </Button>                                        
                 </Navbar>                  
