@@ -1,4 +1,6 @@
 import React from 'react'
+import Navbar from 'react-bootstrap/Navbar'
+import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/fetchTransactions'
 
@@ -6,23 +8,45 @@ class TransactionsInput extends React.Component {
     
     state = {time: 'day'} // THIS should be set via a prop!
 
-    handleChange = (event) => {
-        this.setState ({
-            time: event.target.value
-        })
-    }
+    //handleChange = (event) => {
+    //    this.setState ({
+    //        time: event.target.value
+    //    })
+    //}
 
-    handleSubmit = (event) => {
+    //handleSubmit = (event) => {
         // Create action for a specific time period
-        event.preventDefault()
-        this.props.fetchTransactions(this.state.time)
-    }
+    //    event.preventDefault()
+    //   this.props.fetchTransactions(this.state.time)
+    //}
+
+    handleClick = (event) => {
+        // Create action for a specific time period
+        this.setState ({
+           time: event.target.value
+        })        
+        this.props.fetchTransactions(event.target.value)
+    }    
 
     render() {
         return (
             <div>
-                Choose time period:
-                <form onSubmit={this.handleSubmit}>
+                <Navbar bg="dark" variant="dark" expand="sm">
+                    <Button variant="dark" size="sm" value="year" onClick={this.handleClick}>
+                        Year
+                    </Button>
+                    <Button variant="dark" size="sm" value="month" onClick={this.handleClick}>
+                        Month
+                    </Button>
+                    <Button variant="dark" size="sm" value="week" onClick={this.handleClick}>
+                        Week
+                    </Button>
+                    <Button variant="dark" size="sm" value="day" onClick={this.handleClick}>
+                        Day
+                    </Button>                                        
+                </Navbar>                  
+                
+                {/*<form onSubmit={this.handleSubmit}>
                     <label>
                         <input 
                             type="radio" 
@@ -64,7 +88,7 @@ class TransactionsInput extends React.Component {
                         Day
                    </label>    
                    <input type="submit"/>             
-                </form>
+                 </form>*/}
             </div>    
         )
     }
