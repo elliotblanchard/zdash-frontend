@@ -43,7 +43,8 @@ import Col from 'react-bootstrap/Col'
                     </p>
                     </Jumbotron>   
                 </Col>                                
-            </Row>                                                 
+            </Row> 
+            {/*                                                
             <h1>Transactions</h1>
             {transactions.map((timeUnit, index) => (
                 <div key={index}>
@@ -55,7 +56,8 @@ import Col from 'react-bootstrap/Col'
                         ))}
                     </ul>
                 </div>
-            ))}            
+            ))}     
+            */}       
         </div>
     )
  }

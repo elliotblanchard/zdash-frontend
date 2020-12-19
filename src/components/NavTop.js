@@ -7,7 +7,16 @@ const NavTop = () => {
     return (
         <div>
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand href="/">Zdash</Navbar.Brand>
+                <Navbar.Brand href="/">
+                    <img
+                        alt=""
+                        src="zcash-icon-white.svg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />{' '}                    
+                    Zdash
+                </Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/">Transactions</Nav.Link>
                     <Nav.Link href="/accounts">Accounts</Nav.Link>
