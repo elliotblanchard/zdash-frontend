@@ -14,7 +14,7 @@ class TransactionsContainer extends React.Component {
     render() {
         return (
             <div>
-                {/* Why does prop have to be doubled? */}
+                {/* Why does prop have to be doubled? */}                
                 <TransactionsInput transactions={this.props.transactions.transactions}/>
                 <Transactions transactions={this.props.transactions.transactions}/>
             </div>

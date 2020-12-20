@@ -105,3 +105,12 @@
     margin-bottom: 0;
   }
   
+  .my-modal {
+    width: 90vw    /* Occupy the 90% of the screen width */
+    max-width: 90vw;
+  }     
+
+  .chart-spacing {
+      height: 100%;
+      border-radius: 30px 30px 30px 30px;
+  }    
