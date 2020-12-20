@@ -3,193 +3,213 @@ import { ResponsiveBar } from '@nivo/bar';
 
 const Bar = () => {
     return (    
-	<ResponsiveBar
-		data={data}
-		keys={[
-			"hot dog",
-			"burger",
-			"sandwich",
-			"kebab",
-			"fries",
-			"donut"
-		]}
-		indexBy="country"
-		margin={{
-			"top": 10,
-			"right": 10,
-			"bottom": 70,
-			"left": 10
-		}}
-		padding={0.3}
-		colors="nivo"
-		colorBy="id"
-		defs={[
-			{
-				"id": "dots",
-				"type": "patternDots",
-				"background": "inherit",
-				"color": "#38bcb2",
-				"size": 4,
-				"padding": 1,
-				"stagger": true
-			},
-			{
-				"id": "lines",
-				"type": "patternLines",
-				"background": "inherit",
-				"color": "#eed312",
-				"rotation": -45,
-				"lineWidth": 6,
-				"spacing": 10
-			}
-		]}
-		fill={[
-			{
-				"match": {
-					"id": "fries"
-				},
-				"id": "dots"
-			},
-			{
-				"match": {
-					"id": "sandwich"
-				},
-				"id": "lines"
-			}
-		]}
-		borderColor="inherit:darker(1.6)"
-		axisBottom={{
-			"tickSize": 5,
-			"tickPadding": 5,
-			"tickRotation": 0,
-			"legend": "country",
-			"legendPosition": "middle",
-			"legendOffset": 32
-		}}
-		axisLeft={{
-			"tickSize": 5,
-			"tickPadding": 5,
-			"tickRotation": 0,
-			"legend": "food",
-			"legendPosition": "middle",
-			"legendOffset": -40
-		}}
-		labelSkipWidth={12}
-		labelSkipHeight={12}
-		labelTextColor="inherit:darker(1.6)"
-		animate={true}
-		motionStiffness={90}
-		motionDamping={15}
-	/>
+<ResponsiveBar
+        data={data}
+        keys={[ 
+            'transparent', 
+            'transparent coinbase',
+            'sapling deshielding',
+            'sapling shielding',  
+            'sapling shielded', 
+            'sprout deshielding'  
+        ]}
+        indexBy="day"
+        margin={{ top: 50, right: 150, bottom: 75, left: 80 }}
+        padding={0.3}
+        valueScale={{ type: 'linear' }}
+        indexScale={{ type: 'band', round: true }}
+        colors={{ scheme: 'nivo' }}
+        /*         
+        defs={[
+            {
+                id: 'dots',
+                type: 'patternDots',
+                background: 'inherit',
+                color: '#38bcb2',
+                size: 4,
+                padding: 1,
+                stagger: true
+            },
+            {
+                id: 'lines',
+                type: 'patternLines',
+                background: 'inherit',
+                color: '#eed312',
+                rotation: -45,
+                lineWidth: 6,
+                spacing: 10
+            }
+        ]}
+        fill={[
+            {
+                match: {
+                    id: 'sapling deshielding'
+                },
+                id: 'dots'
+            },
+            {
+                match: {
+                    id: 'sapling shielded'
+                },
+                id: 'lines'
+            }
+        ]}
+        */
+        borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'day',
+            legendPosition: 'middle',
+            legendOffset: 32
+        }}
+        axisLeft={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'transactions',
+            legendPosition: 'middle',
+            legendOffset: -50
+        }}
+        labelSkipWidth={12}
+        labelSkipHeight={12}
+        labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+        legends={[
+            {
+                dataFrom: 'keys',
+                anchor: 'bottom-right',
+                direction: 'column',
+                justify: false,
+                translateX: 120,
+                translateY: 0,
+                itemsSpacing: 2,
+                itemWidth: 100,
+                itemHeight: 20,
+                itemDirection: 'left-to-right',
+                itemOpacity: 0.85,
+                symbolSize: 20,
+                effects: [
+                    {
+                        on: 'hover',
+                        style: {
+                            itemOpacity: 1
+                        }
+                    }
+                ]
+            }
+        ]}
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
+    />
     )
  }
 
 const data = [
-	{
-		"country": "AD",
-		"hot dog": 0,
-		"hot dogColor": "hsl(312, 70%, 50%)",
-		"burger": 128,
-		"burgerColor": "hsl(208, 70%, 50%)",
-		"sandwich": 67,
-		"sandwichColor": "hsl(100, 70%, 50%)",
-		"kebab": 185,
-		"kebabColor": "hsl(114, 70%, 50%)",
-		"fries": 179,
-		"friesColor": "hsl(56, 70%, 50%)",
-		"donut": 190,
-		"donutColor": "hsl(354, 70%, 50%)"
-	},
-	{
-		"country": "AE",
-		"hot dog": 16,
-		"hot dogColor": "hsl(113, 70%, 50%)",
-		"burger": 78,
-		"burgerColor": "hsl(121, 70%, 50%)",
-		"sandwich": 145,
-		"sandwichColor": "hsl(355, 70%, 50%)",
-		"kebab": 101,
-		"kebabColor": "hsl(113, 70%, 50%)",
-		"fries": 178,
-		"friesColor": "hsl(243, 70%, 50%)",
-		"donut": 134,
-		"donutColor": "hsl(86, 70%, 50%)"
-	},
-	{
-		"country": "AF",
-		"hot dog": 21,
-		"hot dogColor": "hsl(68, 70%, 50%)",
-		"burger": 170,
-		"burgerColor": "hsl(296, 70%, 50%)",
-		"sandwich": 154,
-		"sandwichColor": "hsl(19, 70%, 50%)",
-		"kebab": 8,
-		"kebabColor": "hsl(301, 70%, 50%)",
-		"fries": 77,
-		"friesColor": "hsl(91, 70%, 50%)",
-		"donut": 105,
-		"donutColor": "hsl(68, 70%, 50%)"
-	},
-	{
-		"country": "AG",
-		"hot dog": 104,
-		"hot dogColor": "hsl(141, 70%, 50%)",
-		"burger": 192,
-		"burgerColor": "hsl(121, 70%, 50%)",
-		"sandwich": 151,
-		"sandwichColor": "hsl(67, 70%, 50%)",
-		"kebab": 200,
-		"kebabColor": "hsl(149, 70%, 50%)",
-		"fries": 174,
-		"friesColor": "hsl(132, 70%, 50%)",
-		"donut": 24,
-		"donutColor": "hsl(96, 70%, 50%)"
-	},
-	{
-		"country": "AI",
-		"hot dog": 103,
-		"hot dogColor": "hsl(66, 70%, 50%)",
-		"burger": 169,
-		"burgerColor": "hsl(212, 70%, 50%)",
-		"sandwich": 149,
-		"sandwichColor": "hsl(190, 70%, 50%)",
-		"kebab": 162,
-		"kebabColor": "hsl(142, 70%, 50%)",
-		"fries": 51,
-		"friesColor": "hsl(210, 70%, 50%)",
-		"donut": 69,
-		"donutColor": "hsl(222, 70%, 50%)"
-	},
-	{
-		"country": "AL",
-		"hot dog": 136,
-		"hot dogColor": "hsl(47, 70%, 50%)",
-		"burger": 139,
-		"burgerColor": "hsl(200, 70%, 50%)",
-		"sandwich": 138,
-		"sandwichColor": "hsl(167, 70%, 50%)",
-		"kebab": 147,
-		"kebabColor": "hsl(329, 70%, 50%)",
-		"fries": 29,
-		"friesColor": "hsl(201, 70%, 50%)",
-		"donut": 156,
-		"donutColor": "hsl(41, 70%, 50%)"
-	},
-	{
-		"country": "AM",
-		"hot dog": 37,
-		"hot dogColor": "hsl(49, 70%, 50%)",
-		"burger": 9,
-		"burgerColor": "hsl(235, 70%, 50%)",
-		"sandwich": 108,
-		"sandwichColor": "hsl(225, 70%, 50%)",
-		"kebab": 160,
-		"kebabColor": "hsl(324, 70%, 50%)",
-		"fries": 170,
-		"friesColor": "hsl(0, 70%, 50%)",
-		"donut": 126,
-		"donutColor": "hsl(199, 70%, 50%)"
-	}
+    {
+        "day": "mon 5/15",
+        "sapling deshielding": 200,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 63,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 235,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "sprout deshielding": 1,
+        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
+        "transparent": 2536,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 1147,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },
+      {
+        "day": "tue 5/16",
+        "sapling deshielding": 255,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 70,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 202,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "transparent": 2437,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 1129,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },
+      {
+        "day": "wed 5/17",
+        "sapling deshielding": 198,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 79,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 204,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "transparent": 2632,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 1097,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },   
+      {
+        "day": "thu 5/18",
+        "sapling deshielding": 249,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 148,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 204,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "sprout deshielding": 1,
+        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
+        "transparent": 2635,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 1065,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },      
+      {
+        "day": "fri 5/19",
+        "sapling deshielding": 178,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 149,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 159,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "sprout deshielding": 4,
+        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
+        "transparent": 2011,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 740,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },     
+      {
+        "day": "sat 5/20",
+        "sapling deshielding": 204,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 76,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 179,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "sprout deshielding": 2,
+        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
+        "transparent": 2990,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 913,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },    
+      {
+        "day": "sun 5/21",
+        "sapling deshielding": 166,
+        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
+        "sapling shielded": 113,
+        "sapling shieldedColor": "hsl(123, 70%, 50%)",
+        "sapling shielding": 172,
+        "sapling shieldingColor": "hsl(133, 70%, 50%)",
+        "sprout deshielding": 3,
+        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
+        "transparent": 2407,
+        "transparentColor": "hsl(318, 70%, 50%)",
+        "transparent coinbase": 826,
+        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
+      },                
 ];
 
 export default Bar 

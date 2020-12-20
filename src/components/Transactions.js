@@ -24,15 +24,15 @@ const Transactions = ({transactions}) => {
                 <div
                     className="grid-cell"
                     key="1"
-                    data-grid={{ x: 0, y: 0, w: 2, h: 3 }}
+                    data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
                 >
-                    <h3>Daily Community Engagement</h3>
+                    <h3>All Transactions</h3>
                     <Bar />
                 </div>  
                 <div
                     className="grid-cell"
                     key="2"
-                    data-grid={{ x: 0, y: 3, w: 2, h: 3 }}
+                    data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
                 >
                     <h3>Members' Favorite Food</h3>
                     <Bar />
