@@ -14,100 +14,99 @@ const breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 320 };
 const cols = { lg: 4, md: 4, sm: 1, xs: 1, xxs: 1 };
 
 const Transactions = ({transactions}) => {
-
-    return (
-        <div>   
-            <ResponsiveGridLayout
-            breakpoints={breakpoints}
-            cols={cols}
-            >
-                <div
-                    className="grid-cell"
-                    key="1"
-                    data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
-                >
-                    <h3>All Transactions</h3>
-                    <Bar />
-                </div>  
-                <div
-                    className="grid-cell"
-                    key="2"
-                    data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
-                >
-                    <h3>Members' Favorite Food</h3>
-                    <Bar />
-                </div>              
-                <div
-                    className="grid-cell"
-                    key="3"
-                    data-grid={{ x: 0, y: 6, w: 2, h: 3 }}
-                >
-                    <h3>Members' Favorite Drinks</h3>
-                    <Bar />
-                </div>
-                <div
-                    className="grid-cell"
-                    key="4"
-                    data-grid={{ x: 2, y: 6, w: 2, h: 3 }}
-                >
-                    <h3>Members' Favorite Transportion</h3>
-                    <Bar />
-                </div>                                
-            </ResponsiveGridLayout>            
-            {/*                      
-            <Row>
-                <Col>
-                    <Jumbotron className="h-99">
-                    <h1>All transactions</h1>
-                    <p>
-                        Stacked bar
-                    </p>
-                    </Jumbotron> 
-                </Col>                
-            </Row>     
-            <Row>
-                <Col>                      
-                    <Jumbotron className="h-99">
-                    <h1>Percentage of total</h1>
-                    <p>
-                        Bump
-                    </p>
-                    </Jumbotron>   
-                </Col>                
-            </Row>  
-            <Row>
-                <Col>                      
-                    <Jumbotron className="h-99">
-                    <h1>Shielded only</h1>
-                    <p>
-                        Stacked bar
-                    </p>
-                    </Jumbotron>   
-                </Col>  
-                <Col>                      
-                    <Jumbotron className="h-99">
-                    <h1>Percentage of total period</h1>
-                    <p>
-                        Pie
-                    </p>
-                    </Jumbotron>   
-                </Col>                                
-            </Row>                                                
-            <h1>Transactions</h1>
-            {transactions.map((timeUnit, index) => (
-                <div key={index}>
-                    <h3>{timeUnit.interval.replace(/^\w/, (c) => c.toUpperCase())}: {timeUnit.number} Total: {timeUnit.total}</h3>
-                    <p>Categories:</p>
-                    <ul>
-                        {timeUnit.categories.map((category, index) => (
-                            <li key={index}>{category[0]}: {category[1]}</li>
-                        ))}
-                    </ul>
-                </div>
-            ))}     
-            */}       
-        </div>
-    )
+		return (
+			<div>   
+				<ResponsiveGridLayout
+				breakpoints={breakpoints}
+				cols={cols}
+				>
+					<div
+						className="grid-cell"
+						key="1"
+						data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
+					>
+						<h3>All Transactions</h3>
+						<Bar transactions={transactions}/>
+					</div>  
+					<div
+						className="grid-cell"
+						key="2"
+						data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
+					>
+						<h3>Members' Favorite Food</h3>
+						<Bar />
+					</div>              
+					<div
+						className="grid-cell"
+						key="3"
+						data-grid={{ x: 0, y: 6, w: 2, h: 3 }}
+					>
+						<h3>Members' Favorite Drinks</h3>
+						<Bar />
+					</div>
+					<div
+						className="grid-cell"
+						key="4"
+						data-grid={{ x: 2, y: 6, w: 2, h: 3 }}
+					>
+						<h3>Members' Favorite Transportion</h3>
+						<Bar />
+					</div>                                
+				</ResponsiveGridLayout>            
+				{/*                      
+				<Row>
+					<Col>
+						<Jumbotron className="h-99">
+						<h1>All transactions</h1>
+						<p>
+							Stacked bar
+						</p>
+						</Jumbotron> 
+					</Col>                
+				</Row>     
+				<Row>
+					<Col>                      
+						<Jumbotron className="h-99">
+						<h1>Percentage of total</h1>
+						<p>
+							Bump
+						</p>
+						</Jumbotron>   
+					</Col>                
+				</Row>  
+				<Row>
+					<Col>                      
+						<Jumbotron className="h-99">
+						<h1>Shielded only</h1>
+						<p>
+							Stacked bar
+						</p>
+						</Jumbotron>   
+					</Col>  
+					<Col>                      
+						<Jumbotron className="h-99">
+						<h1>Percentage of total period</h1>
+						<p>
+							Pie
+						</p>
+						</Jumbotron>   
+					</Col>                                
+				</Row>                                                
+				<h1>Transactions</h1>
+				{transactions.map((timeUnit, index) => (
+					<div key={index}>
+						<h3>{timeUnit.interval.replace(/^\w/, (c) => c.toUpperCase())}: {timeUnit.number} Total: {timeUnit.total}</h3>
+						<p>Categories:</p>
+						<ul>
+							{timeUnit.categories.map((category, index) => (
+								<li key={index}>{category[0]}: {category[1]}</li>
+							))}
+						</ul>
+					</div>
+				))}     
+				*/}       
+			</div>
+		)	
  }
 
  const data = [
