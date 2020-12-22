@@ -25,7 +25,7 @@ const Transactions = ({transactions}) => {
 						key="1"
 						data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 					>
-						<h3>All Transactions</h3>
+						<h3>All transactions (times GMT)</h3>
 						<Bar transactions={transactions}/>
 					</div>  
 					<div
@@ -33,7 +33,7 @@ const Transactions = ({transactions}) => {
 						key="2"
 						data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
 					>
-						<h3>Members' Favorite Food</h3>
+						<h3>Percentage of total (bump)</h3>
 						<Bar />
 					</div>              
 					<div
@@ -41,7 +41,7 @@ const Transactions = ({transactions}) => {
 						key="3"
 						data-grid={{ x: 0, y: 6, w: 2, h: 3 }}
 					>
-						<h3>Members' Favorite Drinks</h3>
+						<h3>Shielded only (bar)</h3>
 						<Bar />
 					</div>
 					<div
@@ -49,7 +49,7 @@ const Transactions = ({transactions}) => {
 						key="4"
 						data-grid={{ x: 2, y: 6, w: 2, h: 3 }}
 					>
-						<h3>Members' Favorite Transportion</h3>
+						<h3>Percentage of total period (pie)</h3>
 						<Bar />
 					</div>                                
 				</ResponsiveGridLayout>            

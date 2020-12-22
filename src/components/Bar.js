@@ -2,13 +2,19 @@ import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 
 const Bar = ({transactions}) => {
-    if (transactions) { 
+    if ( (transactions !== undefined) && (transactions.length > 0) ) { 
         let keys = []   
-        transactions.map((transaction, index) => (
-            transaction.categories.map((category, index) => (
+        let data = []
+        transactions.forEach((transaction) => {
+            let interval = {}
+            interval[transaction.unit] = transaction.display_time
+            transaction.categories.forEach((category) => {
+                interval[category[0].toLowerCase()] = category[1]
                 keys.push(category[0].toLowerCase())
-             ))                 
-        )) 
+            }) 
+            data.push(interval)                
+        }) 
+        console.log(data)
         let uniqueKeys = [...new Set(keys)]
         uniqueKeys.reverse()
         let axisBottom = {
@@ -119,6 +125,7 @@ const Bar = ({transactions}) => {
 	}        
  }
 
+/*
 const data = [
     {
         "day": "mon 5/15",
@@ -222,5 +229,6 @@ const data = [
         "transparent coinbaseColor": "hsl(70, 70%, 50%)"
       },                
 ];
+*/
 
 export default Bar 
