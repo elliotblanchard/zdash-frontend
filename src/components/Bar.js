@@ -2,7 +2,6 @@ import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 
 function Bar(props) {
-    console.log(props.shieldedOnly)
    
     if ( (props.transactions !== undefined) && (props.transactions.length > 0) ) { 
         /*

@@ -1,10 +1,10 @@
 import React from 'react'
 import Bar from './Bar'
+import Bump from './Bump'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Responsive, WidthProvider } from 'react-grid-layout'
-import { ResponsiveBar } from '@nivo/bar'
 
 // Handles the responsive nature of the grid
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -34,7 +34,7 @@ const Transactions = ({transactions}) => {
 						data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
 					>
 						<h3>Percentage of total (bump)</h3>
-						<Bar />
+						<Bump transactions={transactions} shieldedOnly={false}/>
 					</div>              
 					<div
 						className="grid-cell"
