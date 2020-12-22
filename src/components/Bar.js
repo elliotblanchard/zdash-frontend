@@ -1,20 +1,34 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 
-const Bar = ({transactions}) => {
-    if ( (transactions !== undefined) && (transactions.length > 0) ) { 
+function Bar(props) {
+    console.log(props.shieldedOnly)
+   
+    if ( (props.transactions !== undefined) && (props.transactions.length > 0) ) { 
+        /*
+            Definition of "shielded only" is any category containing the words:
+            * shielded
+            * deshielding
+            * shielding
+        */        
         let keys = []   
         let data = []
-        transactions.forEach((transaction) => {
+        props.transactions.forEach((transaction) => {
             let interval = {}
             interval[transaction.unit] = transaction.display_time
             transaction.categories.forEach((category) => {
-                interval[category[0].toLowerCase()] = category[1]
-                keys.push(category[0].toLowerCase())
+                if (!props.shieldedOnly) {
+                    interval[category[0].toLowerCase()] = category[1]
+                    keys.push(category[0].toLowerCase())
+                } else {
+                    if (category[0].toLowerCase().includes('shield')) {
+                        interval[category[0].toLowerCase()] = category[1]
+                        keys.push(category[0].toLowerCase())
+                    }
+                }
             }) 
             data.push(interval)                
         }) 
-        console.log(data)
         let uniqueKeys = [...new Set(keys)]
         uniqueKeys.reverse()
         let axisBottom = {
@@ -25,12 +39,12 @@ const Bar = ({transactions}) => {
                 legendPosition: 'middle',
                 legendOffset: 32
             } 
-        axisBottom.legend = transactions[0].unit       
+        axisBottom.legend = props.transactions[0].unit       
         return ( 
             <ResponsiveBar
             data={data}
             keys={uniqueKeys}
-            indexBy={transactions[0].unit}
+            indexBy={props.transactions[0].unit}
             margin={{ top: 50, right: 150, bottom: 75, left: 80 }}
             padding={0.3}
             valueScale={{ type: 'linear' }}

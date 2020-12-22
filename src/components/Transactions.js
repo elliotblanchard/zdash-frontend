@@ -26,7 +26,7 @@ const Transactions = ({transactions}) => {
 						data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 					>
 						<h3>All transactions (times GMT)</h3>
-						<Bar transactions={transactions}/>
+						<Bar transactions={transactions} shieldedOnly={false}/>
 					</div>  
 					<div
 						className="grid-cell"
@@ -39,15 +39,15 @@ const Transactions = ({transactions}) => {
 					<div
 						className="grid-cell"
 						key="3"
-						data-grid={{ x: 0, y: 6, w: 2, h: 3 }}
+						data-grid={{ x: 0, y: 6, w: 4, h: 3 }}
 					>
 						<h3>Shielded only (bar)</h3>
-						<Bar />
+						<Bar transactions={transactions} shieldedOnly={true}/>
 					</div>
 					<div
 						className="grid-cell"
 						key="4"
-						data-grid={{ x: 2, y: 6, w: 2, h: 3 }}
+						data-grid={{ x: 2, y: 9, w: 4, h: 3 }}
 					>
 						<h3>Percentage of total period (pie)</h3>
 						<Bar />
