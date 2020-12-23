@@ -33,7 +33,7 @@ function Bar(props) {
         let axisBottom = {
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 90,
+                tickRotation: 0,
                 legend: '',
                 legendPosition: 'middle',
                 legendOffset: 32
@@ -49,22 +49,21 @@ function Bar(props) {
             valueScale={{ type: 'linear' }}
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
-            /*         
             defs={[
                 {
                     id: 'dots',
                     type: 'patternDots',
                     background: 'inherit',
-                    color: '#38bcb2',
-                    size: 4,
-                    padding: 1,
+                    color: 'rgba(255, 255, 255, 0.3)',
+                    size: 3,
+                    padding: 5,
                     stagger: true
                 },
                 {
                     id: 'lines',
                     type: 'patternLines',
                     background: 'inherit',
-                    color: '#eed312',
+                    color: 'rgba(255, 255, 255, 0.3)',
                     rotation: -45,
                     lineWidth: 6,
                     spacing: 10
@@ -81,10 +80,33 @@ function Bar(props) {
                     match: {
                         id: 'sapling shielded'
                     },
+                    id: 'dots'
+                },
+                {
+                    match: {
+                        id: 'sapling shielding'
+                    },
+                    id: 'dots'
+                },
+                {
+                    match: {
+                        id: 'sprout deshielding'
+                    },
                     id: 'lines'
-                }
+                },
+                {
+                    match: {
+                        id: 'sprout shielded'
+                    },
+                    id: 'lines'
+                },
+                {
+                    match: {
+                        id: 'sprout shielding'
+                    },
+                    id: 'lines'
+                },
             ]}
-            */
             borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
             axisTop={null}
             axisRight={null}
