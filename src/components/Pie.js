@@ -36,6 +36,7 @@ function Pie(props) {
             radialLabelsLinkColor={{ from: 'color' }}
             sliceLabelsSkipAngle={10}
             sliceLabelsTextColor="#333333"
+            isInteractive={false}
             defs={[
                 {
                     id: 'dots',

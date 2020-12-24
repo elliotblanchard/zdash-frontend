@@ -23,6 +23,7 @@ function Bump(props) {
             margin={{ top: 50, right: 120, bottom: 75, left: 120 }}
             spacing={8}            
             colors={{ scheme: 'nivo' }}
+            isInteractive={false}
             defs={[
                 {
                     id: 'dots',
@@ -81,7 +82,7 @@ function Bump(props) {
                     id: 'lines'
                 },
             ]}            
-            blendMode="multiply"  
+            blendMode="normal"  
             startLabel="id"
             axisTop={{
                 tickSize: 5,

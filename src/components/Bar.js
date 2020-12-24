@@ -49,6 +49,7 @@ function Bar(props) {
             valueScale={{ type: 'linear' }}
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
+            isInteractive={false}
             defs={[
                 {
                     id: 'dots',
