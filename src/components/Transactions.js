@@ -17,7 +17,7 @@ const cols = { lg: 4, md: 4, sm: 1, xs: 1, xxs: 1 };
 var styles = {
 	color:'white',
 	backgroundColor:'black',
-	background:'#73AD21',
+	background:'#262736',
 	borderRadius:'10px',
 	padding:'20px'	
 }
@@ -33,7 +33,7 @@ const Transactions = ({transactions}) => {
 						key="1"
 						data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 					>
-						<h3>All transactions (times GMT)</h3>
+						All transactions (times GMT)
 						<Bar transactions={transactions} shieldedOnly={false}/>
 					</div> 
 					<div style={styles}

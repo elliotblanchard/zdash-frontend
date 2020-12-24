@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 const NavTop = () => {
     return (
         <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar variant="dark" expand="lg">
                 <Navbar.Brand href="/">
                     <img
                         alt=""
@@ -18,9 +18,17 @@ const NavTop = () => {
                     Zdash
                 </Navbar.Brand> 
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav.Link href="/">Transactions</Nav.Link>
-                    <Nav.Link href="/accounts">Accounts</Nav.Link>
-                    <Nav.Link href="/network">Network</Nav.Link>
+                    <Nav>                      
+                        <Nav.Item>                         
+                            <Nav.Link href="/">Transactions</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>                        
+                                <Nav.Link href="/accounts">Accounts</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>                              
+                            <Nav.Link href="/network">Network</Nav.Link>
+                        </Nav.Item>    
+                    </Nav>                    
                 </Navbar.Collapse>                
             </Navbar>                       
         </div>
