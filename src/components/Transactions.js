@@ -33,7 +33,7 @@ const Transactions = ({transactions}) => {
 						key="1"
 						data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 					>
-						All transactions (times GMT)
+						By Type: All
 						<Bar transactions={transactions} shieldedOnly={false}/>
 					</div> 
 					<div style={styles}
@@ -41,7 +41,7 @@ const Transactions = ({transactions}) => {
 						key="3"
 						data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
 					>
-						<h3>Shielded only (bar)</h3>
+						By Type: Shielded Only
 						<Bar transactions={transactions} shieldedOnly={true}/>
 					</div>					 
 					<div style={styles}

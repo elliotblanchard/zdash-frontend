@@ -35,7 +35,10 @@ class TransactionsInput extends React.Component {
     render() {
         return (
             <div>                  
-                <Navbar variant="dark" expand="lg">
+                <Navbar variant="dark" expand="lg">    
+                    <Navbar.Brand href="/">                  
+                        Transactions: previous {this.state.time}
+                    </Navbar.Brand>       
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      
                         <NavDropdown title="Select time period" id="nav-dropdown">

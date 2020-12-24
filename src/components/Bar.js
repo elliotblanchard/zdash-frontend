@@ -2,14 +2,18 @@ import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 
 function Bar(props) {
-   
     if ( (props.transactions !== undefined) && (props.transactions.length > 0) ) { 
         /*
             Definition of "shielded only" is any category containing the words:
             * shielded
             * deshielding
             * shielding
-        */        
+        */             
+       const lineGraphSettings = {
+        theme: {
+        textColor: '#ddd',
+        },
+        }       
         let keys = []   
         let data = []
         props.transactions.forEach((transaction) => {
@@ -50,6 +54,7 @@ function Bar(props) {
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
             isInteractive={false}
+            theme={lineGraphSettings.theme}
             defs={[
                 {
                     id: 'dots',
@@ -113,7 +118,7 @@ function Bar(props) {
             axisRight={null}
             axisBottom={axisBottom}
             axisLeft={{
-                tickSize: 5,
+                tickSize: 0,
                 tickPadding: 5,
                 tickRotation: 0,
                 legend: 'transactions',
