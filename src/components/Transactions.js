@@ -18,13 +18,12 @@ var styles = {
 	color:'white',
 	backgroundColor:'black',
 	background:'#73AD21',
-	borderRadius:'20px',
+	borderRadius:'10px',
 	padding:'20px'	
 }
 
 const Transactions = ({transactions}) => {
 		return (
-			<Jumbotron>  
 				<ResponsiveGridLayout
 				breakpoints={breakpoints}
 				cols={cols}
@@ -69,60 +68,7 @@ const Transactions = ({transactions}) => {
 						<h3>Percentage of total period (pie)</h3>
 						<Pie  transactions={transactions}/>
 					</div>  					             
-				</ResponsiveGridLayout>            
-				{/*                      
-				<Row>
-					<Col>
-						<Jumbotron className="h-99">
-						<h1>All transactions</h1>
-						<p>
-							Stacked bar
-						</p>
-						</Jumbotron> 
-					</Col>                
-				</Row>     
-				<Row>
-					<Col>                      
-						<Jumbotron className="h-99">
-						<h1>Percentage of total</h1>
-						<p>
-							Bump
-						</p>
-						</Jumbotron>   
-					</Col>                
-				</Row>  
-				<Row>
-					<Col>                      
-						<Jumbotron className="h-99">
-						<h1>Shielded only</h1>
-						<p>
-							Stacked bar
-						</p>
-						</Jumbotron>   
-					</Col>  
-					<Col>                      
-						<Jumbotron className="h-99">
-						<h1>Percentage of total period</h1>
-						<p>
-							Pie
-						</p>
-						</Jumbotron>   
-					</Col>                                
-				</Row>                                                
-				<h1>Transactions</h1>
-				{transactions.map((timeUnit, index) => (
-					<div key={index}>
-						<h3>{timeUnit.interval.replace(/^\w/, (c) => c.toUpperCase())}: {timeUnit.number} Total: {timeUnit.total}</h3>
-						<p>Categories:</p>
-						<ul>
-							{timeUnit.categories.map((category, index) => (
-								<li key={index}>{category[0]}: {category[1]}</li>
-							))}
-						</ul>
-					</div>
-				))}     
-				*/}       
-			</Jumbotron>
+				</ResponsiveGridLayout>                 
 		)	
  }
 

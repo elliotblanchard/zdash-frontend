@@ -16,12 +16,12 @@ const NavTop = () => {
                         className="d-inline-block align-top"
                     />{' '}                    
                     Zdash
-                </Navbar.Brand>
-                <Nav className="mr-auto">
+                </Navbar.Brand> 
+                <Navbar.Collapse className="justify-content-end">
                     <Nav.Link href="/">Transactions</Nav.Link>
                     <Nav.Link href="/accounts">Accounts</Nav.Link>
                     <Nav.Link href="/network">Network</Nav.Link>
-                </Nav>  
+                </Navbar.Collapse>                
             </Navbar>                       
         </div>
     )
