@@ -49,25 +49,17 @@ const Transactions = ({transactions}) => {
 						key="2"
 						data-grid={{ x: 0, y: 6, w: 4, h: 3 }}
 					>
-						<h3>Percentage of total</h3>
+						By Type: Percentage of Total
 						<Bump transactions={transactions}/>
 					</div>              
 					<div style={styles}
 						className="grid-cell"
 						key="4"
-						data-grid={{ x: 0, y: 9, w: 2, h: 3 }}
+						data-grid={{ x: 0, y: 9, w: 4, h: 3 }}
 					>
-						<h3>Percentage of total period (pie)</h3>
+						By Type: Totals for Time Period
 						<Pie  transactions={transactions}/>
-					</div>                   
-					<div style={styles}
-						className="grid-cell"
-						key="5"
-						data-grid={{ x: 2, y: 9, w: 2, h: 3 }}
-					>
-						<h3>Percentage of total period (pie)</h3>
-						<Pie  transactions={transactions}/>
-					</div>  					             
+					</div>                    					             
 				</ResponsiveGridLayout>                 
 		)	
  }

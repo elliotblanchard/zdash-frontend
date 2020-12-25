@@ -33,11 +33,33 @@ class TransactionsInput extends React.Component {
     }     
 
     render() {
+        let intervalCopy = ""
+        if ( (this.props.transactions !== undefined) && (this.props.transactions.length > 0) ) { 
+            switch(this.state.time) {
+                case 'day':
+                    const dateObject = new Date(this.props.transactions[0].time * 1000)
+                    const longDate = `${dateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
+                    const datArr = longDate.split('/')
+                    intervalCopy = `${datArr[0]}/${datArr[1]}`
+                    break
+                case 'week':
+                    intervalCopy = `${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    break
+                case 'month':
+                    // code block
+                    break
+                case 'year':
+                    // code block
+                    break                             
+                default:
+                    // code block
+            }
+        }
         return (
             <div>                  
                 <Navbar variant="dark" expand="lg">    
                     <Navbar.Brand href="/">                  
-                        Transactions: previous {this.state.time}
+                        Transactions for previous {this.state.time}: {intervalCopy} 
                     </Navbar.Brand>       
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      

@@ -3,12 +3,16 @@ import { ResponsivePie } from '@nivo/pie';
 
 function Pie(props) {
     if ( (props.transactions !== undefined) && (props.transactions.length > 0) ) { 
-        
-        let total = 0
+        const axisColorSettings = {
+            theme: {
+            textColor: '#bbb',       
+            },
+            }         
+        //let total = 0
         let categoryHash = {}   
         let data = []
         props.transactions.forEach((transaction) => {
-            total += transaction.total
+            //total += transaction.total
             transaction.categories.forEach((category) => {
                 let categoryName = category[0].toLowerCase()
                 if (!categoryHash[categoryName]) {
@@ -17,9 +21,7 @@ function Pie(props) {
                 categoryHash[categoryName].value += category[1]
             })                
         }) 
-        data = Object.values(categoryHash) 
-        console.log(`Total is: ${total}`)       
-        console.log(data)        
+        data = Object.values(categoryHash)       
 
         return ( 
             <ResponsivePie
@@ -29,78 +31,137 @@ function Pie(props) {
             padAngle={0.7}
             cornerRadius={3}
             colors={{ scheme: 'nivo' }}
-            borderWidth={1}
-            borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+            borderWidth={0}
+            borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}            
             radialLabelsSkipAngle={10}
-            radialLabelsTextColor="#333333"
-            radialLabelsLinkColor={{ from: 'color' }}
+            radialLabelsTextColor="#bbb"
+            radialLabelsLinkColor="#bbb"
             sliceLabelsSkipAngle={10}
-            sliceLabelsTextColor="#333333"
+            sliceLabelsTextColor="#333"
             isInteractive={false}
+            theme={axisColorSettings.theme}            
             defs={[
                 {
-                    id: 'dots',
-                    type: 'patternDots',
-                    background: 'inherit',
-                    color: 'rgba(255, 255, 255, 0.3)',
-                    size: 3,
-                    padding: 5,
-                    stagger: true
+                    id: 'sapling_deshielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#48F9B8' },
+                        { offset: 100, color: '#48F9B8' },
+                    ],
                 },
                 {
-                    id: 'lines',
-                    type: 'patternLines',
-                    background: 'inherit',
-                    color: 'rgba(255, 255, 255, 0.3)',
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10
-                }
+                    id: 'sapling_shielded',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#52F25D' },
+                        { offset: 100, color: '#52F25D' },
+                    ],
+                },
+                {
+                    id: 'sapling_shielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#B5F948' },
+                        { offset: 100, color: '#B5F948' },
+                    ],
+                },     
+                {
+                    id: 'sprout_deshielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#F93611' },
+                        { offset: 100, color: '#F93611' },
+                    ],
+                },
+                {
+                    id: 'sprout_shielded',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#F21D81' },
+                        { offset: 100, color: '#F21D81' },
+                    ],
+                },
+                {
+                    id: 'sprout_shielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#BE11F9' },
+                        { offset: 100, color: '#BE11F9' },
+                    ],
+                },    
+                {
+                    id: 'transparent',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#2D8DFA' },
+                        { offset: 100, color: '#2D8DFA' },
+                    ],
+                },
+                {
+                    id: 'transparent_coinbase',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#2EADDB' },
+                        { offset: 100, color: '#2EADDB' },
+                    ],
+                }                                         
             ]}
             fill={[
                 {
                     match: {
                         id: 'sapling deshielding'
                     },
-                    id: 'dots'
+                    id: 'sapling_deshielding'
                 },
                 {
                     match: {
                         id: 'sapling shielded'
                     },
-                    id: 'dots'
+                    id: 'sapling_shielded'
                 },
                 {
                     match: {
                         id: 'sapling shielding'
                     },
-                    id: 'dots'
+                    id: 'sapling_shielding'
                 },
                 {
                     match: {
                         id: 'sprout deshielding'
                     },
-                    id: 'lines'
+                    id: 'sprout_deshielding'
                 },
                 {
                     match: {
                         id: 'sprout shielded'
                     },
-                    id: 'lines'
+                    id: 'sprout_shielded'
                 },
                 {
                     match: {
                         id: 'sprout shielding'
                     },
-                    id: 'lines'
+                    id: 'sprout_shielding'
                 },
-            ]}
+                {
+                    match: {
+                        id: 'transparent'
+                    },
+                    id: 'transparent'
+                },
+                {
+                    match: {
+                        id: 'transparent coinbase'
+                    },
+                    id: 'transparent_coinbase'
+                },                
+            ]}            
             legends={[
                 {
                     anchor: 'right',
                     direction: 'column',
                     justify: false,
-                    translateX: 0,
+                    translateX: -100,
                     translateY: 0,
                     itemsSpacing: 10,
                     itemWidth: 100,

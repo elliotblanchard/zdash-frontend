@@ -9,9 +9,9 @@ function Bar(props) {
             * deshielding
             * shielding
         */             
-       const lineGraphSettings = {
+       const axisColorSettings = {
         theme: {
-        textColor: '#ddd',
+        textColor: '#bbb',       
         },
         }       
         let keys = []   
@@ -54,64 +54,122 @@ function Bar(props) {
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
             isInteractive={false}
-            theme={lineGraphSettings.theme}
+            theme={axisColorSettings.theme}
             defs={[
                 {
-                    id: 'dots',
-                    type: 'patternDots',
-                    background: 'inherit',
-                    color: 'rgba(255, 255, 255, 0.3)',
-                    size: 3,
-                    padding: 5,
-                    stagger: true
+                    id: 'sapling_deshielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#48F9B8' },
+                        { offset: 100, color: '#48F9B8' },
+                    ],
                 },
                 {
-                    id: 'lines',
-                    type: 'patternLines',
-                    background: 'inherit',
-                    color: 'rgba(255, 255, 255, 0.3)',
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10
-                }
+                    id: 'sapling_shielded',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#52F25D' },
+                        { offset: 100, color: '#52F25D' },
+                    ],
+                },
+                {
+                    id: 'sapling_shielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#B5F948' },
+                        { offset: 100, color: '#B5F948' },
+                    ],
+                },     
+                {
+                    id: 'sprout_deshielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#F93611' },
+                        { offset: 100, color: '#F93611' },
+                    ],
+                },
+                {
+                    id: 'sprout_shielded',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#F21D81' },
+                        { offset: 100, color: '#F21D81' },
+                    ],
+                },
+                {
+                    id: 'sprout_shielding',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#BE11F9' },
+                        { offset: 100, color: '#BE11F9' },
+                    ],
+                },    
+                {
+                    id: 'transparent',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#2D8DFA' },
+                        { offset: 100, color: '#2D8DFA' },
+                    ],
+                },
+                {
+                    id: 'transparent_coinbase',
+                    type: 'linearGradient',
+                    colors: [
+                        { offset: 0, color: '#2EADDB' },
+                        { offset: 100, color: '#2EADDB' },
+                    ],
+                }                                         
             ]}
             fill={[
                 {
                     match: {
                         id: 'sapling deshielding'
                     },
-                    id: 'dots'
+                    id: 'sapling_deshielding'
                 },
                 {
                     match: {
                         id: 'sapling shielded'
                     },
-                    id: 'dots'
+                    id: 'sapling_shielded'
                 },
                 {
                     match: {
                         id: 'sapling shielding'
                     },
-                    id: 'dots'
+                    id: 'sapling_shielding'
                 },
                 {
                     match: {
                         id: 'sprout deshielding'
                     },
-                    id: 'lines'
+                    id: 'sprout_deshielding'
                 },
                 {
                     match: {
                         id: 'sprout shielded'
                     },
-                    id: 'lines'
+                    id: 'sprout_shielded'
                 },
                 {
                     match: {
                         id: 'sprout shielding'
                     },
-                    id: 'lines'
+                    id: 'sprout_shielding'
                 },
+                {
+                    match: {
+                        id: 'transparent'
+                    },
+                    id: 'transparent'
+                },
+                {
+                    match: {
+                        id: 'transparent coinbase'
+                    },
+                    id: 'transparent_coinbase'
+                },                
             ]}
             borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
             axisTop={null}
