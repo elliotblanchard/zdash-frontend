@@ -185,7 +185,7 @@ function Bar(props) {
             }}
             labelSkipWidth={12}
             labelSkipHeight={12}
-            labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+            labelTextColor="#333"
             legends={[
                 {
                     dataFrom: 'keys',
