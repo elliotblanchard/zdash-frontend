@@ -2,7 +2,6 @@ import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 
 function Bar(props) {
-    if ( (props.transactions !== undefined) && (props.transactions.length > 0) ) { 
         /*
             Definition of "shielded only" is any category containing the words:
             * shielded
@@ -214,120 +213,7 @@ function Bar(props) {
             motionStiffness={90}
             motionDamping={15}
         />
-        )
-	} else {
-		return ( 
-			<div>
-				Loading!
-			</div>
-		)
-	}        
+        )      
  }
-
-/*
-const data = [
-    {
-        "day": "mon 5/15",
-        "sapling deshielding": 200,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 63,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 235,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "sprout deshielding": 1,
-        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
-        "transparent": 2536,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 1147,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },
-      {
-        "day": "tue 5/16",
-        "sapling deshielding": 255,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 70,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 202,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "transparent": 2437,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 1129,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },
-      {
-        "day": "wed 5/17",
-        "sapling deshielding": 198,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 79,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 204,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "transparent": 2632,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 1097,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },   
-      {
-        "day": "thu 5/18",
-        "sapling deshielding": 249,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 148,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 204,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "sprout deshielding": 1,
-        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
-        "transparent": 2635,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 1065,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },      
-      {
-        "day": "fri 5/19",
-        "sapling deshielding": 178,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 149,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 159,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "sprout deshielding": 4,
-        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
-        "transparent": 2011,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 740,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },     
-      {
-        "day": "sat 5/20",
-        "sapling deshielding": 204,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 76,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 179,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "sprout deshielding": 2,
-        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
-        "transparent": 2990,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 913,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },    
-      {
-        "day": "sun 5/21",
-        "sapling deshielding": 166,
-        "sapling deshieldingColor": "hsl(359, 70%, 50%)",
-        "sapling shielded": 113,
-        "sapling shieldedColor": "hsl(123, 70%, 50%)",
-        "sapling shielding": 172,
-        "sapling shieldingColor": "hsl(133, 70%, 50%)",
-        "sprout deshielding": 3,
-        "sprout deshieldingColor": "hsl(34, 70%, 50%)",
-        "transparent": 2407,
-        "transparentColor": "hsl(318, 70%, 50%)",
-        "transparent coinbase": 826,
-        "transparent coinbaseColor": "hsl(70, 70%, 50%)"
-      },                
-];
-*/
 
 export default Bar 

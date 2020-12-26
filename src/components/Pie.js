@@ -2,7 +2,6 @@ import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
 
 function Pie(props) {
-    if ( (props.transactions !== undefined) && (props.transactions.length > 0) ) { 
         const axisColorSettings = {
             theme: {
             textColor: '#bbb',       
@@ -182,14 +181,7 @@ function Pie(props) {
                 }
             ]}
         />
-        )
-    } else {
-        return ( 
-            <div>
-                Loading!
-            </div>
-        )
-    }          
+        )        
 }
 
 export default Pie     

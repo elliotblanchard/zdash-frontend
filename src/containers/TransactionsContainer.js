@@ -12,13 +12,21 @@ class TransactionsContainer extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                {/* Why does prop have to be doubled? */}                
-                <TransactionsInput transactions={this.props.transactions.transactions}/>
-                <Transactions transactions={this.props.transactions.transactions}/>
-            </div>
-        )
+        if ( (this.props.transactions.transactions !== undefined) && (this.props.transactions.transactions.length > 0) ) {
+            return (
+                <div>
+                    {/* Why does prop have to be doubled? */}                
+                    <TransactionsInput transactions={this.props.transactions.transactions}/>
+                    <Transactions transactions={this.props.transactions.transactions}/>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h1>LOADING!!!!</h1>
+                </div>
+            )            
+        }
     }
 } 
 
