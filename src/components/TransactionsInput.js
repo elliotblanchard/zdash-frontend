@@ -29,18 +29,18 @@ class TransactionsInput extends React.Component {
 
     render() {
         let intervalCopy = ""
-        switch(this.state.time) {
+        switch(this.props.transactions[0].unit) {
             case 'day':
                 const dateObject = new Date(this.props.transactions[0].time * 1000)
                 const longDate = `${dateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
                 const datArr = longDate.split('/')
-                intervalCopy = `${datArr[0]}/${datArr[1]}`
+                intervalCopy = `day: ${datArr[0]}/${datArr[1]}`
                 break
             case 'week':
-                intervalCopy = `${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                intervalCopy = `week: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break
             case 'month':
-                intervalCopy = `${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                intervalCopy = `month: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break
             case 'year':
                 // code block
@@ -52,7 +52,7 @@ class TransactionsInput extends React.Component {
             <div>                  
                 <Navbar variant="dark" expand="lg">    
                     <Navbar.Brand href="/">                  
-                        Transactions for previous {this.state.time}: {intervalCopy} 
+                        Transactions for previous {intervalCopy} 
                     </Navbar.Brand>       
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      

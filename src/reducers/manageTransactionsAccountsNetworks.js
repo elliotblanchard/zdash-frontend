@@ -11,8 +11,16 @@ export default rootReducer;
 
 function transactionsReducer(state = { transactions: []}, action) {
     switch (action.type) {
-        case 'FETCH_TRANSACTIONS':
-            return {transactions: action.payload}
+        case 'LOADING_TRANSACTIONS':
+            return {
+                transactions: action.payload,
+                loading: true
+            }        
+        case 'ADD_TRANSACTIONS':
+            return {
+                transactions: action.payload,
+                loading: false
+            }
         default:
             return state
     }
@@ -20,8 +28,16 @@ function transactionsReducer(state = { transactions: []}, action) {
 
 function accountsReducer(state = { accounts: []}, action) {
     switch (action.type) {
-        case 'FETCH_ACCOUNTS':
-            return {accounts: action.payload}
+        case 'LOADING_ACCOUNTS':
+            return {
+                accounts: action.payload,
+                loading: true
+            }        
+        case 'ADD_ACCOUNTS':
+            return {
+                accounts: action.payload,
+                loading: false
+            }
         default:
             return state
     }
@@ -29,8 +45,16 @@ function accountsReducer(state = { accounts: []}, action) {
 
 function accountDetailReducer(state = { accountDetail: []}, action) {
     switch (action.type) {
-        case 'FETCH_ACCOUNT_DETAIL':
-            return {accountDetail: action.payload}
+        case 'LOADING_ACCOUNT_DETAIL':
+            return {
+                accountDetail: action.payload,
+                loading: true
+            }        
+        case 'ADD_ACCOUNT_DETAIL':
+            return {
+                accountDetail: action.payload,
+                loading: false
+            }
         default:
             return state
     }

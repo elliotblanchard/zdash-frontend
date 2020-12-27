@@ -14,24 +14,32 @@ class TransactionsContainer extends React.Component {
         this.props.fetchTransactions('day')
     }
 
-    render() {
-        if ( (this.props.transactions.transactions !== undefined) && (this.props.transactions.transactions.length > 0) ) {
-            return (
-                <div>
-                    {/* Why does prop have to be doubled? */}                
-                    <TransactionsInput transactions={this.props.transactions.transactions}/>
-                    <Transactions transactions={this.props.transactions.transactions}/>
-                </div>
+    handleLoading = () => {
+        if( (this.props.transactions.loading) || (!this.props.transactions.transactions) || (this.props.transactions.transactions.length === 0) ) {
+          return (
+            <div>
+                <Navbar variant="dark" expand="lg">
+                    <Spinner animation="border" variant="light" />
+                </Navbar>
+            </div>
             )
         } else {
-            return (
-                <div>
-                    <Navbar variant="dark" expand="lg">
-                        <Spinner animation="border" variant="light" />
-                    </Navbar>
-                </div>
-            )            
+          return (
+            <div>
+                {/* Why does prop have to be doubled?*/}  
+                <TransactionsInput transactions={this.props.transactions.transactions}/>
+                <Transactions transactions={this.props.transactions.transactions}/> 
+            </div>
+          )
         }
+      }    
+
+    render() {
+        return (
+            <div>
+                {this.handleLoading()}
+            </div>
+        )
     }
 } 
 
