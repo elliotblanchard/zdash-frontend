@@ -2,11 +2,6 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import Button from 'react-bootstrap/Button'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/fetchTransactions'
 
@@ -45,7 +40,7 @@ class TransactionsInput extends React.Component {
                 intervalCopy = `${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break
             case 'month':
-                // code block
+                intervalCopy = `${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break
             case 'year':
                 // code block

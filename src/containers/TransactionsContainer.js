@@ -1,6 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import Spinner from 'react-bootstrap/Spinner'
+import Navbar from 'react-bootstrap/Navbar'
+
 import {fetchTransactions} from '../actions/fetchTransactions'
 import TransactionsInput from '../components/TransactionsInput'
 import Transactions from '../components/Transactions'
@@ -23,7 +26,9 @@ class TransactionsContainer extends React.Component {
         } else {
             return (
                 <div>
-                    <h1>LOADING!!!!</h1>
+                    <Navbar variant="dark" expand="lg">
+                        <Spinner animation="border" variant="light" />
+                    </Navbar>
                 </div>
             )            
         }

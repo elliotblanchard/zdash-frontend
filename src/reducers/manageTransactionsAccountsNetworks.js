@@ -38,8 +38,16 @@ function accountDetailReducer(state = { accountDetail: []}, action) {
 
   function networksReducer(state = { networks: []}, action) {
     switch (action.type) {
-        case 'FETCH_NETWORKS':
-            return {networks: action.payload}
+        case 'LOADING_NETWORKS':
+            return {
+                networks: action.payload,
+                loading: true
+            }        
+        case 'ADD_NETWORKS':
+            return {
+                networks: action.payload,
+                loading: false
+            }
         default:
             return state
     }

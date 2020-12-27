@@ -1,12 +1,10 @@
 import React from 'react';
-import { ResponsiveAreaBump } from '@nivo/bump';
+import { ResponsiveAreaBump } from '@nivo/bump'
+import defs from '../nivostyles/defs.js'
+import fill from '../nivostyles/fill.js'
+import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
-function Bump(props) {
-    const axisColorSettings = {
-        theme: {
-        textColor: '#bbb',       
-        },
-        }  
+function Bump(props) { 
     let categoryHash = {}   
     let data = []
     props.transactions.forEach((transaction) => {
@@ -28,140 +26,19 @@ function Bump(props) {
         colors={{ scheme: 'nivo' }}
         isInteractive={false}
         theme={axisColorSettings.theme}            
-        defs={[
-            {
-                id: 'sapling_deshielding',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#48F9B8' },
-                    { offset: 100, color: '#48F9B8' },
-                ],
-            },
-            {
-                id: 'sapling_shielded',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#52F25D' },
-                    { offset: 100, color: '#52F25D' },
-                ],
-            },
-            {
-                id: 'sapling_shielding',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#B5F948' },
-                    { offset: 100, color: '#B5F948' },
-                ],
-            },     
-            {
-                id: 'sprout_deshielding',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#F93611' },
-                    { offset: 100, color: '#F93611' },
-                ],
-            },
-            {
-                id: 'sprout_shielded',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#F21D81' },
-                    { offset: 100, color: '#F21D81' },
-                ],
-            },
-            {
-                id: 'sprout_shielding',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#BE11F9' },
-                    { offset: 100, color: '#BE11F9' },
-                ],
-            },    
-            {
-                id: 'transparent',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#2D8DFA' },
-                    { offset: 100, color: '#2D8DFA' },
-                ],
-            },
-            {
-                id: 'transparent_coinbase',
-                type: 'linearGradient',
-                colors: [
-                    { offset: 0, color: '#2EADDB' },
-                    { offset: 100, color: '#2EADDB' },
-                ],
-            }                                         
-        ]}
-        fill={[
-            {
-                match: {
-                    id: 'sapling deshielding'
-                },
-                id: 'sapling_deshielding'
-            },
-            {
-                match: {
-                    id: 'sapling shielded'
-                },
-                id: 'sapling_shielded'
-            },
-            {
-                match: {
-                    id: 'sapling shielding'
-                },
-                id: 'sapling_shielding'
-            },
-            {
-                match: {
-                    id: 'sprout deshielding'
-                },
-                id: 'sprout_deshielding'
-            },
-            {
-                match: {
-                    id: 'sprout shielded'
-                },
-                id: 'sprout_shielded'
-            },
-            {
-                match: {
-                    id: 'sprout shielding'
-                },
-                id: 'sprout_shielding'
-            },
-            {
-                match: {
-                    id: 'transparent'
-                },
-                id: 'transparent'
-            },
-            {
-                match: {
-                    id: 'transparent coinbase'
-                },
-                id: 'transparent_coinbase'
-            },                
-        ]}   
+        defs={defs}
+        fill={fill}   
         borderColor={{ from: 'fill' }} 
         boarderOpacity={0}   
         startLabelTextColor="#bbb" 
         endLabelTextColor="#bbb"  
         blendMode="normal"  
         startLabel="id"
-        axisTop={{
-            tickSize: 0,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: '',
-            legendPosition: 'middle',
-            legendOffset: -36
-        }}
+        axisTop={null}
         axisBottom={{
             tickSize: 0,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: 90,
             legend: '',
             legendPosition: 'middle',
             legendOffset: 32

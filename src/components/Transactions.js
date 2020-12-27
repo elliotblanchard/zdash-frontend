@@ -3,8 +3,6 @@ import Bar from './Bar'
 import Bump from './Bump'
 import Pie from './Pie'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
 // Handles the responsive nature of the grid
