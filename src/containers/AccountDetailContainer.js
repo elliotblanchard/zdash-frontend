@@ -13,7 +13,7 @@ class AccountDetailContainer extends React.Component {
     }
 
     handleLoading = () => {
-        if(this.props.accountDetail.loading) {
+        if( (this.props.accountDetail.loading) || (!this.props.accountDetail.accountDetail) || (this.props.accountDetail.accountDetail.length === 0) ) {           
           return (
             <div>
                 <Navbar variant="dark" expand="lg">

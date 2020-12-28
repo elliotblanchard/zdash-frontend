@@ -54,7 +54,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 3, y: 0, w: 1, h: 1 }}
 				>
 					<p>Mean block time</p>
-                    <h1>{numberWithCommas(networks.meanBlockTime)}</h1>
+                    <h1>{numberWithCommas(networks.meanBlockTime.toFixed(2))}</h1>
 				</div>     
 				<div style={roundedBox}
 					className="grid-cell"
@@ -70,7 +70,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 0, y: 2, w: 2, h: 1 }}
 				>
 					<p>Difficulty</p>
-                    <h1>{numberWithCommas(networks.difficulty)}</h1>
+                    <h1>{numberWithCommas(networks.difficulty.toFixed(2))}</h1>
 				</div> 
 				<div style={roundedBox}
 					className="grid-cell"
@@ -110,7 +110,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 3, y: 3, w: 1, h: 1 }}
 				>
 					<p>Total amount</p>
-                    <h1>{numberWithCommas(networks.totalAmount)}</h1>
+                    <h1>{numberWithCommas(Math.round(networks.totalAmount))}</h1>
 				</div>    
 				<div style={roundedBox}
 					className="grid-cell"
@@ -118,7 +118,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 0, y: 4, w: 2, h: 1 }}
 				>
 					<p>Sprout pool</p>
-                    <h1>{numberWithCommas(networks.sproutPool)}</h1>
+                    <h1>{numberWithCommas(networks.sproutPool.toFixed(2))}</h1>
 				</div> 
 				<div style={roundedBox}
 					className="grid-cell"
@@ -126,7 +126,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 2, y: 4, w: 2, h: 1 }}
 				>
 					<p>Sapling pool</p>
-                    <h1>{numberWithCommas(networks.saplingPool)}</h1>
+                    <h1>{numberWithCommas(networks.saplingPool.toFixed(2))}</h1>
 				</div>                                                     
 				<div style={roundedBox}
 					className="grid-cell"
@@ -134,7 +134,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 0, y: 5, w: 1, h: 1 }}
 				>
 					<p>Version</p>
-                    <h1>{networks.meanBlockTime}</h1>
+                    <h1>{networks.version}</h1>
 				</div>   
 				<div style={roundedBox}
 					className="grid-cell"
