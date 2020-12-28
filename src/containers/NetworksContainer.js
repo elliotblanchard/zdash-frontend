@@ -12,7 +12,7 @@ class NetworksContainer extends React.Component {
     }
 
     handleLoading = () => {
-        if(this.props.networks.loading) {
+        if( (this.props.networks.loading) || (!this.props.networks.networks) || (this.props.networks.networks.length === 0) ) {
           return (
             <div>
                 <Navbar variant="dark" expand="lg">
