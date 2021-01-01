@@ -12,6 +12,13 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function truncateArray(arr) {
+  if (arr.length > 6) {
+    arr.length = 6
+  }
+  return arr
+}
+
  const AccountDetail = (accountDetail) => {
   const firstDateObject = new Date(accountDetail.accountDetail.firstSeen * 1000)
   const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
@@ -20,6 +27,9 @@ function numberWithCommas(x) {
   const lastDateObject = new Date(accountDetail.accountDetail.lastSeen * 1000)
   const lastLongDate = `${lastDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
   const lastShortDate = lastLongDate.split(",")[0]  
+
+  const recvTransShort = truncateArray(accountDetail.accountDetail.recvTrans)
+  const sentTransShort = truncateArray(accountDetail.accountDetail.sentTrans)
   
   return (
         <div>
@@ -95,39 +105,32 @@ function numberWithCommas(x) {
                 >
                   <p>Sent count</p>
                   <h1>{numberWithCommas(accountDetail.accountDetail.sentCount.toFixed(4))}</h1>
-                </div>                                                                                      
-            </ResponsiveGridLayout>            
-          <h3>Address: {accountDetail.accountDetail.address}</h3>
-            <ul>           
-              <li>
-                  Recent transactions recieved: 
-                  <ul>
-                    { accountDetail.accountDetail.recvTrans ? 
-                      accountDetail.accountDetail.recvTrans.map((trans, index) => (
-                        <li key={trans.hash}>
-                            {trans.hash}
-                        </li>
+                </div>    
+                <div style={roundedBox}
+                  className="grid-cell"
+                  key="9"
+                  data-grid={{ x: 0, y: 2, w: 4, h: 2 }}
+                >
+                  <p>Recent transactions rec'd</p>
+                  { recvTransShort.map((trans, index) => (
+                            
+                            <h4>{trans.hash}</h4>
                       ))
-                      : 
-                      null 
-                    }
-                  </ul>
-              </li>
-              <li>
-                  Recent transactions sent: 
-                  <ul>
-                    { accountDetail.accountDetail.sentTrans ? 
-                      accountDetail.accountDetail.sentTrans.map((trans, index) => (
-                        <li key={trans.hash}>
-                            {trans.hash}
-                        </li>
+                    }                  
+                </div>                   
+                <div style={roundedBox}
+                  className="grid-cell"
+                  key="10"
+                  data-grid={{ x: 0, y: 4, w: 4, h: 2 }}
+                >
+                  <p>Recent transactions sent</p>
+                  { sentTransShort.map((trans, index) => (
+                            
+                            <h4>{trans.hash}</h4>
                       ))
-                      : 
-                      null 
-                    }
-                  </ul>
-              </li>              
-            </ul>          
+                    }                  
+                </div>                                                                                                 
+            </ResponsiveGridLayout>                     
         </div>
     )
  }
