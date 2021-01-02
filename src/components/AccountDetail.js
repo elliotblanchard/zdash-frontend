@@ -47,6 +47,7 @@ function truncateArray(arr) {
                   key="1"
                   data-grid={{ x: 0, y: 0, w: 1, h: 1 }}
                 >
+                  
                   <p>Balance</p>
                   <h1>{numberWithCommas(accountDetail.accountDetail.balance.toFixed(4))}</h1>
                 </div>   
@@ -111,7 +112,7 @@ function truncateArray(arr) {
                   key="9"
                   data-grid={{ x: 0, y: 2, w: 4, h: 2 }}
                 >
-                  <p>Recent transactions rec'd</p>
+                  <p>Recent transactions recieved</p>
                   { recvTransShort.map((trans, index) => (
                             
                             <h4>{trans.hash}</h4>
