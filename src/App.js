@@ -27,10 +27,18 @@ class App extends React.Component {
             <Route path='/accounts' component={AccountsContainer} />
             <Route path='/network' component={NetworksContainer} />
           </Switch>
-          <Navbar variant="dark" expand="lg" sticky="bottom">   
-                <Navbar.Brand href="https://github.com/elliotblanchard">                   
-                    <small>Zdash is maintained by Elliot Blanchard</small>
-                </Navbar.Brand>                   
+          <Navbar variant="dark" expand="lg" sticky="bottom"> 
+                <Navbar.Collapse>
+                  <Nav>
+                    <Nav.Item>                         
+                      <Nav.Link href="https://github.com/elliotblanchard">
+                        <small>
+                            Zdash is maintained by Elliot Blanchard. Your donations support development.
+                        </small>
+                      </Nav.Link>
+                    </Nav.Item>
+                  </Nav> 
+                </Navbar.Collapse>                            
                 <Navbar.Collapse className="justify-content-end">
                     <Nav>                                                                 
                         <Nav.Item>                              
