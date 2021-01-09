@@ -2,12 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import roundedBox from '../nivostyles/roundedBox.js'
-import cols from '../nivostyles/cols.js'
-import breakpoints from '../nivostyles/breakpoints.js'
-import { Responsive, WidthProvider } from 'react-grid-layout'
 
-// Handles the responsive nature of the grid
-const ResponsiveGridLayout = WidthProvider(Responsive)
 
 const Accounts = ({accounts}) => {
     return (

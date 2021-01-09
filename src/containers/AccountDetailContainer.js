@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
 import Navbar from 'react-bootstrap/Navbar'
-import {Route} from 'react-router-dom'
 import {fetchAccountDetail} from '../actions/fetchAccountDetail'
 import AccountDetail from '../components/AccountDetail'
 

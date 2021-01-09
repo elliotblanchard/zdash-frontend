@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import React from 'react'
 import {Route} from 'react-router-dom'
 import {Switch} from 'react-router-dom'
 import NavTop from './components/NavTop'
@@ -11,7 +10,6 @@ import AccountDetailContainer from './containers/AccountDetailContainer'
 import NetworksContainer from './containers/NetworksContainer'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container'
-import Card from 'react-bootstrap/Card'
 
 
 class App extends React.Component {
