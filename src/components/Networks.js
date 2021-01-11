@@ -9,7 +9,9 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+	return (x + "").replace(/\b(\d+)((\.\d+)*)\b/g, function(a, b, c) {
+		return (b.charAt(0) > 0 && !(c || ".").lastIndexOf(".") ? b.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : b) + c;
+	})
 }
 
 const Networks = ({networks}) => {
