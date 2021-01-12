@@ -14,18 +14,23 @@ function numberWithCommas(x) {
 	})
 }
 
+function currentState(networks) {
+	console.log (networks)
+}
+
 const Networks = ({networks}) => {
     return (
         <div>
+			{currentState(networks)}
             <Navbar variant="dark" expand="lg">    
-                <Navbar.Brand href="/">                  
-                    {networks.name.replace(/^\w/, (c) => c.toUpperCase())} statistics 
+                <Navbar.Brand>                  
+                    Mainnet statistics 
                 </Navbar.Brand>                      
             </Navbar> 
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}
 			cols={cols}
-			>
+			>			
 				<div style={roundedBox}
 					className="grid-cell"
 					key="1"
@@ -33,7 +38,7 @@ const Networks = ({networks}) => {
 				>
 					<p>Accounts</p>
                     <h1>{numberWithCommas(networks.accounts)}</h1>
-				</div>    
+				</div>  
 				<div style={roundedBox}
 					className="grid-cell"
 					key="2"
@@ -56,7 +61,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 3, y: 0, w: 1, h: 1 }}
 				>
 					<p>Mean block time</p>
-                    <h1>{numberWithCommas(networks.meanBlockTime.toFixed(2))}</h1>
+                    <h1>{numberWithCommas(parseFloat(networks.meanBlockTime).toFixed(2))}</h1>
 				</div>     
 				<div style={roundedBox}
 					className="grid-cell"
@@ -72,7 +77,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 0, y: 2, w: 2, h: 1 }}
 				>
 					<p>Difficulty</p>
-                    <h1>{numberWithCommas(networks.difficulty.toFixed(2))}</h1>
+                    <h1>{numberWithCommas(parseFloat(networks.difficulty).toFixed(2))}</h1>
 				</div> 
 				<div style={roundedBox}
 					className="grid-cell"
@@ -120,7 +125,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 0, y: 4, w: 2, h: 1 }}
 				>
 					<p>Sprout pool</p>
-                    <h1>{numberWithCommas(networks.sproutPool.toFixed(2))}</h1>
+                    <h1>{numberWithCommas(parseFloat(networks.sproutPool).toFixed(2))}</h1>
 				</div> 
 				<div style={roundedBox}
 					className="grid-cell"
@@ -128,7 +133,7 @@ const Networks = ({networks}) => {
 					data-grid={{ x: 2, y: 4, w: 2, h: 1 }}
 				>
 					<p>Sapling pool</p>
-                    <h1>{numberWithCommas(networks.saplingPool.toFixed(2))}</h1>
+                    <h1>{numberWithCommas(parseFloat(networks.saplingPool).toFixed(2))}</h1>
 				</div>                                                     
 				<div style={roundedBox}
 					className="grid-cell"
@@ -145,8 +150,8 @@ const Networks = ({networks}) => {
 				>
 					<p>Sub version</p>
                     <h1>{networks.subVersion}</h1>
-				</div>                                                                                                                                        
-            </ResponsiveGridLayout>                  
+				</div>                                                                                                                                      
+			</ResponsiveGridLayout>                  
         </div>
     )
  }

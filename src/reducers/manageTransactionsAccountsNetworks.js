@@ -64,7 +64,24 @@ function accountDetailReducer(state = { accountDetail: []}, action) {
     switch (action.type) {
         case 'LOADING_NETWORKS':
             return {
-                networks: action.payload,
+                networks: {
+                    accounts: "",
+                    blockHash: "",
+                    blockNumber: "",
+                    difficulty: "",
+                    hashrate: "",
+                    meanBlockTime: "",
+                    name: "",
+                    peerCount: "",
+                    protocolVersion: "",
+                    relayFee: "",
+                    saplingPool: "",
+                    sproutPool: "",
+                    subVersion: "",
+                    totalAmount: "",
+                    transactions: "",
+                    version: ""                    
+                },
                 loading: true
             }        
         case 'ADD_NETWORKS':
