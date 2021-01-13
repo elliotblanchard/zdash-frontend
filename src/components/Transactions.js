@@ -12,6 +12,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive)
 
 
 const Transactions = ({transactions}) => {
+		console.log(transactions)
 		return (
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}

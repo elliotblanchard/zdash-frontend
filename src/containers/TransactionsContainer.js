@@ -14,6 +14,7 @@ class TransactionsContainer extends React.Component {
         this.props.fetchTransactions('day')
     }
 
+    /*
     handleLoading = () => {
         if( (this.props.transactions.loading) || (!this.props.transactions.transactions) || (this.props.transactions.transactions.length === 0) ) {
           return (
@@ -26,18 +27,20 @@ class TransactionsContainer extends React.Component {
         } else {
           return (
             <div>
-                {/* Why does prop have to be doubled?*/}  
                 <TransactionsInput transactions={this.props.transactions.transactions}/>
                 <Transactions transactions={this.props.transactions.transactions}/> 
             </div>
           )
         }
-      }    
+      } 
+      */   
 
     render() {
         return (
             <div>
-                {this.handleLoading()}
+                {/*this.handleLoading()*/} 
+                <TransactionsInput transactions={this.props.transactions.transactions}/>
+                <Transactions transactions={this.props.transactions.transactions}/>                 
             </div>
         )
     }

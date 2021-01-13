@@ -32,7 +32,7 @@ class NetworksContainer extends React.Component {
     render() {
         return (
             <div>
-                <Networks networks={this.props.networks.networks}/>
+                <Networks networks={this.props.networks}/>
             </div>
         )
     }

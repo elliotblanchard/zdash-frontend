@@ -9,11 +9,21 @@ const rootReducer = combineReducers({
    
 export default rootReducer;
 
-function transactionsReducer(state = { transactions: []}, action) {
+function transactionsReducer(state = {}, action) {
     switch (action.type) {
         case 'LOADING_TRANSACTIONS':
             return {
-                transactions: action.payload,
+                transactions: [
+                    {
+                        categories: [],
+                        display_time: "",
+                        interval: "",
+                        number: 0,
+                        time: 0,
+                        total: 0,
+                        unit: ""                        
+                    }
+                ],
                 loading: true
             }        
         case 'ADD_TRANSACTIONS':
@@ -60,33 +70,31 @@ function accountDetailReducer(state = { accountDetail: []}, action) {
     }
 }
 
-  function networksReducer(state = { networks: []}, action) {
+  function networksReducer(state = {}, action) {
     switch (action.type) {
         case 'LOADING_NETWORKS':
             return {
-                networks: {
-                    accounts: "",
-                    blockHash: "",
-                    blockNumber: "",
-                    difficulty: "",
-                    hashrate: "",
-                    meanBlockTime: "",
-                    name: "",
-                    peerCount: "",
-                    protocolVersion: "",
-                    relayFee: "",
-                    saplingPool: "",
-                    sproutPool: "",
-                    subVersion: "",
-                    totalAmount: "",
-                    transactions: "",
-                    version: ""                    
-                },
+                accounts: "",
+                blockHash: "",
+                blockNumber: "",
+                difficulty: "",
+                hashrate: "",
+                meanBlockTime: "",
+                name: "",
+                peerCount: "",
+                protocolVersion: "",
+                relayFee: "",
+                saplingPool: "",
+                sproutPool: "",
+                subVersion: "",
+                totalAmount: "",
+                transactions: "",
+                version: "",                    
                 loading: true
             }        
         case 'ADD_NETWORKS':
             return {
-                networks: action.payload,
+                ...action.payload,
                 loading: false
             }
         default:

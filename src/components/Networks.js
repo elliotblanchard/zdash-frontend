@@ -15,7 +15,7 @@ function numberWithCommas(x) {
 }
 
 function currentState(networks) {
-	console.log (networks)
+	console.log (`Props are: ${networks}`)
 }
 
 const Networks = ({networks}) => {
