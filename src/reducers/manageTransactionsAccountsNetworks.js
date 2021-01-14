@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
    
 export default rootReducer;
 
-function transactionsReducer(state = {}, action) {
+function transactionsReducer(state = { transactions: [] }, action) {
     switch (action.type) {
         case 'LOADING_TRANSACTIONS':
             return {
@@ -36,7 +36,7 @@ function transactionsReducer(state = {}, action) {
     }
 }
 
-function accountsReducer(state = { accounts: []}, action) {
+function accountsReducer(state = { accounts: [] }, action) {
     switch (action.type) {
         case 'LOADING_ACCOUNTS':
             return {
@@ -53,16 +53,26 @@ function accountsReducer(state = { accounts: []}, action) {
     }
 }
 
-function accountDetailReducer(state = { accountDetail: []}, action) {
+function accountDetailReducer(state = {}, action) {
     switch (action.type) {
         case 'LOADING_ACCOUNT_DETAIL':
             return {
-                accountDetail: action.payload,
+                address: "",
+                balance: 0.0,
+                firstSeen: 0,
+                lastSeen: 0,
+                minedCount: 0,
+                recvCount: 0,
+                recvTrans: [],
+                sentCount: 0,
+                sentTrans: [],
+                totalRecv: 0.0,
+                totalSent: 0,
                 loading: true
             }        
         case 'ADD_ACCOUNT_DETAIL':
             return {
-                accountDetail: action.payload,
+                ...action.payload,
                 loading: false
             }
         default:

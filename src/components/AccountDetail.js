@@ -15,13 +15,18 @@ function numberWithCommas(x) {
 }
 
 function truncateArray(arr) {
-  if (arr.length > 6) {
-    arr.length = 6
+  if (arr) {
+    if (arr.length > 6) {
+      arr.length = 6
+    }
+    return arr
+  } else {
+    return []
   }
-  return arr
 }
 
  const AccountDetail = (accountDetail) => {
+  //console.log(accountDetail)
   const firstDateObject = new Date(accountDetail.accountDetail.firstSeen * 1000)
   const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
   const firstShortDate = firstLongDate.split(",")[0]
@@ -43,7 +48,7 @@ function truncateArray(arr) {
             <ResponsiveGridLayout
             breakpoints={breakpoints}
             cols={cols}
-            >
+            >             
                 <div style={roundedBox}
                   className="grid-cell"
                   key="1"
@@ -51,8 +56,8 @@ function truncateArray(arr) {
                 >
                   
                   <p>Balance</p>
-                  <h1>{numberWithCommas(accountDetail.accountDetail.balance.toFixed(4))}</h1>
-                </div>   
+                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.balance).toFixed(4))}</h1>
+                </div>  
                 <div style={roundedBox}
                   className="grid-cell"
                   key="2"
@@ -75,7 +80,7 @@ function truncateArray(arr) {
                   data-grid={{ x: 3, y: 0, w: 1, h: 1 }}
                 >
                   <p>Mined count</p>
-                  <h1>{numberWithCommas(accountDetail.accountDetail.minedCount.toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.minedCount).toFixed(4))}</h1>
                 </div>                
                 <div style={roundedBox}
                   className="grid-cell"
@@ -83,7 +88,7 @@ function truncateArray(arr) {
                   data-grid={{ x: 0, y: 1, w: 1, h: 1 }}
                 >
                   <p>Total recieved</p>
-                  <h1>{numberWithCommas(accountDetail.accountDetail.totalRecv.toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.totalRecv).toFixed(4))}</h1>
                 </div>  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -91,7 +96,7 @@ function truncateArray(arr) {
                   data-grid={{ x: 1, y: 1, w: 1, h: 1 }}
                 >
                   <p>Recieved count</p>
-                  <h1>{numberWithCommas(accountDetail.accountDetail.recvCount.toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.recvCount).toFixed(4))}</h1>
                 </div>                  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -99,7 +104,7 @@ function truncateArray(arr) {
                   data-grid={{ x: 2, y: 1, w: 1, h: 1 }}
                 >
                   <p>Total sent</p>
-                  <h1>{numberWithCommas(accountDetail.accountDetail.totalSent.toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.totalSent).toFixed(4))}</h1>
                 </div>     
                 <div style={roundedBox}
                   className="grid-cell"
@@ -107,8 +112,8 @@ function truncateArray(arr) {
                   data-grid={{ x: 3, y: 1, w: 1, h: 1 }}
                 >
                   <p>Sent count</p>
-                  <h1>{numberWithCommas(accountDetail.accountDetail.sentCount.toFixed(4))}</h1>
-                </div>    
+                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.sentCount).toFixed(4))}</h1>
+                </div>     
                 <div style={roundedBox}
                   className="grid-cell"
                   key="9"
@@ -132,7 +137,7 @@ function truncateArray(arr) {
                             <h4>{trans.hash}</h4>
                       ))
                     }                  
-                </div>                                                                                                 
+                </div>                                                                                                
             </ResponsiveGridLayout>                     
         </div>
     )

@@ -14,8 +14,8 @@ class TransactionsContainer extends React.Component {
         this.props.fetchTransactions('day')
     }
 
-    /*
     handleLoading = () => {
+        console.log(this.props.transactions)
         if( (this.props.transactions.loading) || (!this.props.transactions.transactions) || (this.props.transactions.transactions.length === 0) ) {
           return (
             <div>
@@ -33,14 +33,12 @@ class TransactionsContainer extends React.Component {
           )
         }
       } 
-      */   
+       
 
     render() {
         return (
             <div>
-                {/*this.handleLoading()*/} 
-                <TransactionsInput transactions={this.props.transactions.transactions}/>
-                <Transactions transactions={this.props.transactions.transactions}/>                 
+                {this.handleLoading()}          
             </div>
         )
     }

@@ -11,7 +11,9 @@ class AccountDetailContainer extends React.Component {
         this.props.fetchAccountDetail(this.props.match.params.id)
     }
 
+    
     handleLoading = () => {
+        console.log(this.props.accountDetail)
         if( (this.props.accountDetail.loading) || (!this.props.accountDetail.accountDetail) || (this.props.accountDetail.accountDetail.length === 0) ) {           
           return (
             <div>
@@ -33,7 +35,8 @@ class AccountDetailContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.handleLoading()}
+                {/*this.handleLoading()*/}
+                <AccountDetail accountDetail={this.props.accountDetail}/>
             </div>
         )
     }

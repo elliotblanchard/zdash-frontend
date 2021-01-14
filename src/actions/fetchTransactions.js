@@ -1,4 +1,5 @@
 export function fetchTransactions(time) {
+   console.log(time)
    return (dispatch) => {
       dispatch({ type: 'LOADING_TRANSACTIONS'})
       //fetch(`https://damp-citadel-47471.herokuapp.com/api/v1/transactions/${time}`)

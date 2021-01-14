@@ -14,14 +14,10 @@ function numberWithCommas(x) {
 	})
 }
 
-function currentState(networks) {
-	console.log (`Props are: ${networks}`)
-}
-
 const Networks = ({networks}) => {
+	//console.log(networks)
     return (
         <div>
-			{currentState(networks)}
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand>                  
                     Mainnet statistics 
