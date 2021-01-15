@@ -33,7 +33,8 @@ class AccountsContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.handleLoading()}
+                {/*this.handleLoading()*/}
+                <Accounts accounts={this.props.accounts}/>
             </div>
         )
     }

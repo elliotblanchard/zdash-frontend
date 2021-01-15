@@ -3,15 +3,16 @@ import {Link} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import roundedBox from '../nivostyles/roundedBox.js'
 
-
 const Accounts = ({accounts}) => {
+    console.log(accounts)
     return (
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand href="/">                  
                    Recently active accounts
                 </Navbar.Brand>                      
-            </Navbar>           
+            </Navbar>                
+                
                 <div style={roundedBox}
                   className="grid-cell"
                   key="0"
@@ -22,7 +23,8 @@ const Accounts = ({accounts}) => {
                             <h4><Link to={`/accounts/${account.address}`}>{account.address}</Link></h4>
                       ))
                     }                  
-                </div>                                                                                                                                    
+                </div>   
+                                                                                                                                
         </div>
     )
  }
