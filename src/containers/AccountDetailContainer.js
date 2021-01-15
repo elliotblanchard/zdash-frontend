@@ -11,31 +11,10 @@ class AccountDetailContainer extends React.Component {
         this.props.fetchAccountDetail(this.props.match.params.id)
     }
 
-    
-    handleLoading = () => {
-        console.log(this.props.accountDetail)
-        if( (this.props.accountDetail.loading) || (!this.props.accountDetail.accountDetail) || (this.props.accountDetail.accountDetail.length === 0) ) {           
-          return (
-            <div>
-                <Navbar variant="dark" expand="lg">
-                    <Spinner animation="border" variant="light" />
-                </Navbar>
-            </div>
-            )
-        } else {
-          return (
-            <div>
-                {/* Why does prop have to be doubled? */}
-                <AccountDetail accountDetail={this.props.accountDetail.accountDetail}/>
-            </div>
-          )
-        }
-    }
 
     render() {
         return (
             <div>
-                {/*this.handleLoading()*/}
                 <AccountDetail accountDetail={this.props.accountDetail}/>
             </div>
         )

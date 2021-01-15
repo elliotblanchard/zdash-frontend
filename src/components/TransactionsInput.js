@@ -7,7 +7,7 @@ import { fetchTransactions } from '../actions/fetchTransactions'
 
 class TransactionsInput extends React.Component {
     
-    state = {time: 'day'} // THIS should be set via a prop!
+    state = {time: 'day'} // Default
 
     handleClick = (event) => {
         // Create action for a specific time period
@@ -20,7 +20,6 @@ class TransactionsInput extends React.Component {
 
     handleChange = (event) => {
         // Create action for a specific time period
-        console.log("in handleChange")
         this.setState ({
            time: event.target.value
         })        
@@ -43,7 +42,7 @@ class TransactionsInput extends React.Component {
                 intervalCopy = `month: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break
             case 'year':
-                // code block
+                intervalCopy = `year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break                             
             default:
                 // code block

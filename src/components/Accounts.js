@@ -4,7 +4,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import roundedBox from '../nivostyles/roundedBox.js'
 
 const Accounts = ({accounts}) => {
-    console.log(accounts)
     return (
         <div>
             <Navbar variant="dark" expand="lg">    

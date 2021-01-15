@@ -26,7 +26,6 @@ function truncateArray(arr) {
 }
 
  const AccountDetail = (accountDetail) => {
-  //console.log(accountDetail)
   const firstDateObject = new Date(accountDetail.accountDetail.firstSeen * 1000)
   const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
   const firstShortDate = firstLongDate.split(",")[0]

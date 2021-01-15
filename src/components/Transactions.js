@@ -10,12 +10,7 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 // Handles the responsive nature of the grid
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
-function printProps(transactions) {
-	console.log(transactions)
-}
-
 const Transactions = ({transactions}) => {
-		{printProps(transactions)}
 		return (
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}

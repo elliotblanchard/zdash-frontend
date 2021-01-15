@@ -15,7 +15,6 @@ function numberWithCommas(x) {
 }
 
 const Networks = ({networks}) => {
-	//console.log(networks)
     return (
         <div>
             <Navbar variant="dark" expand="lg">    

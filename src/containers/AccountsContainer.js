@@ -11,29 +11,9 @@ class AccountsContainer extends React.Component {
         this.props.fetchAccounts()
     }
 
-    handleLoading = () => {
-        if(this.props.accounts.loading) {
-          return (
-            <div>
-                <Navbar variant="dark" expand="lg">
-                    <Spinner animation="border" variant="light" />
-                </Navbar>
-            </div>
-            )
-        } else {
-            return (
-                <div>
-                    {/* Why does prop have to be doubled? */}
-                    <Accounts accounts={this.props.accounts.accounts}/>
-                </div>
-            )
-        }
-    }
-
     render() {
         return (
             <div>
-                {/*this.handleLoading()*/}
                 <Accounts accounts={this.props.accounts}/>
             </div>
         )

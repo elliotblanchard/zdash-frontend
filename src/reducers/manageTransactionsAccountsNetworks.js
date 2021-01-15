@@ -10,28 +10,26 @@ const rootReducer = combineReducers({
    
 export default rootReducer;
 
-function transactionsReducer(state = { transactions: [] }, action) {
+function transactionsReducer(state = [
+    {
+        categories: [],
+        display_time: "",
+        interval: "",
+        number: 0,
+        time: 0,
+        total: 0,
+        unit: ""   
+    }     
+], action) {
     switch (action.type) {
         case 'LOADING_TRANSACTIONS':
-            return {
-                transactions: [
-                    {
-                        categories: [],
-                        display_time: "",
-                        interval: "",
-                        number: 0,
-                        time: 0,
-                        total: 0,
-                        unit: ""                        
-                    }
-                ],
-                loading: true
-            }        
+            return [
+                ...state
+            ]         
         case 'ADD_TRANSACTIONS':
-            return {
-                transactions: action.payload,
-                loading: false
-            }
+            return [
+                ...action.payload
+            ]
         default:
             return state
     }
@@ -45,7 +43,7 @@ function accountsReducer(state = [
     switch (action.type) {
         case 'LOADING_ACCOUNTS':
             return [
-                    ...state,
+                    ...state
             ]        
         case 'ADD_ACCOUNTS':
             return [
@@ -56,21 +54,23 @@ function accountsReducer(state = [
     }
 }
 
-function accountDetailReducer(state = {}, action) {
+function accountDetailReducer(state = {
+    address: "",
+    balance: 0.0,
+    firstSeen: 0,
+    lastSeen: 0,
+    minedCount: 0,
+    recvCount: 0,
+    recvTrans: [],
+    sentCount: 0,
+    sentTrans: [],
+    totalRecv: 0.0,
+    totalSent: 0
+}, action) {
     switch (action.type) {
         case 'LOADING_ACCOUNT_DETAIL':
             return {
-                address: "",
-                balance: 0.0,
-                firstSeen: 0,
-                lastSeen: 0,
-                minedCount: 0,
-                recvCount: 0,
-                recvTrans: [],
-                sentCount: 0,
-                sentTrans: [],
-                totalRecv: 0.0,
-                totalSent: 0,
+                ...state,
                 loading: true
             }        
         case 'ADD_ACCOUNT_DETAIL':
@@ -83,26 +83,28 @@ function accountDetailReducer(state = {}, action) {
     }
 }
 
-  function networksReducer(state = {}, action) {
+  function networksReducer(state = {
+    accounts: "",
+    blockHash: "",
+    blockNumber: "",
+    difficulty: "",
+    hashrate: "",
+    meanBlockTime: "",
+    name: "",
+    peerCount: "",
+    protocolVersion: "",
+    relayFee: "",
+    saplingPool: "",
+    sproutPool: "",
+    subVersion: "",
+    totalAmount: "",
+    transactions: "",
+    version: ""
+  }, action) {
     switch (action.type) {
         case 'LOADING_NETWORKS':
             return {
-                accounts: "",
-                blockHash: "",
-                blockNumber: "",
-                difficulty: "",
-                hashrate: "",
-                meanBlockTime: "",
-                name: "",
-                peerCount: "",
-                protocolVersion: "",
-                relayFee: "",
-                saplingPool: "",
-                sproutPool: "",
-                subVersion: "",
-                totalAmount: "",
-                transactions: "",
-                version: "",                    
+                ...state,
                 loading: true
             }        
         case 'ADD_NETWORKS':
