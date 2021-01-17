@@ -23,7 +23,8 @@ const Transactions = ({transactions}) => {
 				>
 					By Type: All
 					<Bar transactions={transactions} shieldedOnly={false}/>
-				</div> 
+				</div>
+				{/* 
 				<div style={roundedBox}
 					className="grid-cell"
 					key="3"
@@ -47,7 +48,8 @@ const Transactions = ({transactions}) => {
 				>
 					By Type: Totals for Time Period
 					<Pie  transactions={transactions}/>
-				</div>                    					             
+				</div>  
+				*/}                  					             
 			</ResponsiveGridLayout>                
 		)	
  }
