@@ -6,19 +6,16 @@ import Spinner from 'react-bootstrap/Spinner'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/fetchTransactions'
 
-/*
-function loadingSpinner(transactions,intervalCopy) {
-    if (transactions[1]) {
-        if (transactions[1].loading === false) {
-            return (`Transactions for previous ${intervalCopy}`)
-        } else {
-            return (<Spinner animation="border" variant="light" />)
-        }
+
+function loadingSpinner(loading,intervalCopy) {
+    console.log(loading)
+    if (loading.loading === false) {
+        return (`Transactions for previous ${intervalCopy}`)
     } else {
         return (<Spinner animation="border" variant="light" />)
     }
 }
-*/
+
 
 
 class TransactionsInput extends React.Component {
@@ -44,7 +41,6 @@ class TransactionsInput extends React.Component {
     
     
     render() {
-        //console.log(this.props.transactions)
         let intervalCopy = ""
             switch(this.props.transactions[0].unit) {
                 case 'day':
@@ -68,7 +64,7 @@ class TransactionsInput extends React.Component {
             <div>                  
                 <Navbar variant="dark" expand="lg">    
                     <Navbar.Brand href="/">   
-                        {/*loadingSpinner(this.props.transactions,intervalCopy)*/}                
+                        {loadingSpinner(this.props.loading,intervalCopy)}                
                     </Navbar.Brand>       
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      

@@ -4,6 +4,7 @@ import {Switch} from 'react-router-dom'
 import NavTop from './components/NavTop'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import TransactionsInputContainer from './containers/TransactionsInputContainer'
 import TransactionsContainer from './containers/TransactionsContainer'
 import AccountsContainer from './containers/AccountsContainer'
 import AccountDetailContainer from './containers/AccountDetailContainer'
@@ -21,6 +22,7 @@ class App extends React.Component {
           <NavTop />
           <Switch>
             <Route exact path='/'>
+              <TransactionsInputContainer />
               <TransactionsContainer />
             </Route>
             <Route path='/accounts/:id' render={(routerProps) => <AccountDetailContainer {...routerProps}/>}/>

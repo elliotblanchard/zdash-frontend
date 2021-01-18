@@ -123,12 +123,10 @@ function accountDetailReducer(state = {
   }, action) {
     switch (action.type) {
         case 'LOADING_FLAG':
-            console.log("Loading")
             return {
                 loading: true
             }        
         case 'LOADED_FLAG':
-            console.log("Loaded")
             return {
                 loading: false
             }

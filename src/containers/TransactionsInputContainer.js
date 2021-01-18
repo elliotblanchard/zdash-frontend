@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchTransactions} from '../actions/fetchTransactions'
-import Transactions from '../components/Transactions'
+import TransactionsInput from '../components/TransactionsInput'
 
 class TransactionsContainer extends React.Component {
   
@@ -13,7 +13,7 @@ class TransactionsContainer extends React.Component {
     render() {
         return (
             <div> 
-                <Transactions transactions={this.props.transactions}/>                        
+                <TransactionsInput transactions={this.props.transactions} loading={this.props.loading}/>                       
             </div>
         )
     }
@@ -21,6 +21,7 @@ class TransactionsContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        loading: state.loading, 
         transactions: state.transactions
     }
 }
