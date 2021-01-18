@@ -92,7 +92,7 @@ function Bar(props) {
                     ]
                 }
             ]}
-            animate={false}
+            animate={true}
             motionStiffness={90}
             motionDamping={15}
         />
