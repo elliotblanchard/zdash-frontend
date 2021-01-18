@@ -4,6 +4,7 @@ import roundedBox from '../nivostyles/roundedBox.js'
 import cols from '../nivostyles/cols.js'
 import breakpoints from '../nivostyles/breakpoints.js'
 import { Responsive, WidthProvider } from 'react-grid-layout'
+import Spinner from 'react-bootstrap/Spinner'
 
 // Handles the responsive nature of the grid
 const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -25,6 +26,15 @@ function truncateArray(arr) {
   }
 }
 
+function loadingSpinner(accountDetail) {
+  console.log(accountDetail)
+	if (accountDetail.accountDetail.address === "") {
+		return (<Spinner animation="border" variant="light" />)
+	} else {
+		return (`Address: ${accountDetail.accountDetail.address}`)
+	}
+}
+
  const AccountDetail = (accountDetail) => {
   const firstDateObject = new Date(accountDetail.accountDetail.firstSeen * 1000)
   const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
@@ -41,7 +51,7 @@ function truncateArray(arr) {
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand href="/">                  
-                    Address: {accountDetail.accountDetail.address} 
+                  {loadingSpinner(accountDetail)} 
                 </Navbar.Brand>                      
             </Navbar>           
             <ResponsiveGridLayout

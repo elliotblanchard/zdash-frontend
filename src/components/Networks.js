@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import roundedBox from '../nivostyles/roundedBox.js'
 import cols from '../nivostyles/cols.js'
 import breakpoints from '../nivostyles/breakpoints.js'
+import Spinner from 'react-bootstrap/Spinner'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 
 // Handles the responsive nature of the grid
@@ -14,12 +15,20 @@ function numberWithCommas(x) {
 	})
 }
 
+function loadingSpinner(networks) {
+	if (networks.name === "") {
+		return (<Spinner animation="border" variant="light" />)
+	} else {
+		return ("Mainnet statistics")
+	}
+}
+
 const Networks = ({networks}) => {
     return (
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand>                  
-                    Mainnet statistics 
+                    {loadingSpinner(networks)} 
                 </Navbar.Brand>                      
             </Navbar> 
 			<ResponsiveGridLayout

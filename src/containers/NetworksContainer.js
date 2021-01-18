@@ -1,7 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Spinner from 'react-bootstrap/Spinner'
-import Navbar from 'react-bootstrap/Navbar'
 import {fetchNetworks} from '../actions/fetchNetworks'
 import Networks from '../components/Networks'
 
