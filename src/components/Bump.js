@@ -4,20 +4,28 @@ import defs from '../nivostyles/defs.js'
 import fill from '../nivostyles/fill.js'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
-function Bump(props) { 
-    let categoryHash = {}   
-    let data = []
-    props.transactions.forEach((transaction) => {
-        transaction.categories.forEach((category) => {
+function prepData(props)  {
+    let categoryHash = {} 
+    let interval = 2
+    if (props.transactions.length > 25) interval = 1 // Area bump dosen't work well with more than 25 columns - like in a month view
+    for (let i = 0; i < props.transactions.length; i = i + interval) {
+        props.transactions[i].categories.forEach((category) => {
             let categoryName = category[0].toLowerCase()
             if (!categoryHash[categoryName]) {
                 categoryHash[categoryName] = {id:categoryName,data:[]}
             } 
-            const percentage = Number((category[1] / transaction.total).toFixed(3))
-            categoryHash[categoryName].data.push({x:transaction.display_time, y:percentage})
+            const percentage = Number((category[1] / props.transactions[i].total).toFixed(3))
+            categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
         })                
-    }) 
-    data = Object.values(categoryHash)     
+    }
+
+    return categoryHash
+}
+
+function Bump(props) {   
+    let data = []
+
+    data = Object.values(prepData(props))     
     return ( 
         <ResponsiveAreaBump
         data={data}
