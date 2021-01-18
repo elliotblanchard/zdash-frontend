@@ -1,9 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import Spinner from 'react-bootstrap/Spinner'
-import Navbar from 'react-bootstrap/Navbar'
-
 import {fetchTransactions} from '../actions/fetchTransactions'
 import TransactionsInput from '../components/TransactionsInput'
 import Transactions from '../components/Transactions'
@@ -11,13 +8,13 @@ import Transactions from '../components/Transactions'
 class TransactionsContainer extends React.Component {
   
     componentDidMount() {
-        this.props.fetchTransactions('day')
+        this.props.fetchTransactions('week')
     }
        
     render() {
         return (
             <div> 
-                <TransactionsInput transactions={this.props.transactions} loading={this.props.loading}/>
+                <TransactionsInput transactions={this.props.transactions}/>
                 <Transactions transactions={this.props.transactions}/>                        
             </div>
         )
@@ -26,8 +23,8 @@ class TransactionsContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        transactions: state.transactions,
-        loading: state.loading
+        //loading: state.loading, // This is the problem - if this is uncommented, the area bump starts to become corrupted
+        transactions: state.transactions
     }
 }
 

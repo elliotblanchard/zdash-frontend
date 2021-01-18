@@ -5,7 +5,6 @@ import fill from '../nivostyles/fill.js'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
 function Bump(props) { 
-    console.log(props)
     let categoryHash = {}   
     let data = []
     props.transactions.forEach((transaction) => {
@@ -14,11 +13,11 @@ function Bump(props) {
             if (!categoryHash[categoryName]) {
                 categoryHash[categoryName] = {id:categoryName,data:[]}
             } 
-            const percentage = category[1] / transaction.total
+            const percentage = Number((category[1] / transaction.total).toFixed(3))
             categoryHash[categoryName].data.push({x:transaction.display_time, y:percentage})
         })                
     }) 
-    data = Object.values(categoryHash)       
+    data = Object.values(categoryHash)     
     return ( 
         <ResponsiveAreaBump
         data={data}

@@ -6,13 +6,20 @@ import Spinner from 'react-bootstrap/Spinner'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/fetchTransactions'
 
-function loadingSpinner(loading,intervalCopy) {
-    if (loading.loading === true) {
-        return (<Spinner animation="border" variant="light" />)
+/*
+function loadingSpinner(transactions,intervalCopy) {
+    if (transactions[1]) {
+        if (transactions[1].loading === false) {
+            return (`Transactions for previous ${intervalCopy}`)
+        } else {
+            return (<Spinner animation="border" variant="light" />)
+        }
     } else {
-        return (`Transactions for previous ${intervalCopy}`)
+        return (<Spinner animation="border" variant="light" />)
     }
 }
+*/
+
 
 class TransactionsInput extends React.Component {
     
@@ -35,31 +42,33 @@ class TransactionsInput extends React.Component {
         this.props.fetchTransactions(event.target.value)
     }   
     
+    
     render() {
+        //console.log(this.props.transactions)
         let intervalCopy = ""
-        switch(this.props.transactions[0].unit) {
-            case 'day':
-                const dateObject = new Date(this.props.transactions[0].time * 1000)
-                const longDate = `${dateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
-                const datArr = longDate.split('/')
-                intervalCopy = `day: ${datArr[0]}/${datArr[1]}`
-                break
-            case 'week':
-                intervalCopy = `week: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
-                break
-            case 'month':
-                intervalCopy = `month: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
-                break
-            case 'year':
-                intervalCopy = `year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
-                break                             
-            default:
-        }
+            switch(this.props.transactions[0].unit) {
+                case 'day':
+                    const dateObject = new Date(this.props.transactions[0].time * 1000)
+                    const longDate = `${dateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
+                    const datArr = longDate.split('/')
+                    intervalCopy = `day: ${datArr[0]}/${datArr[1]}`
+                    break
+                case 'week':
+                    intervalCopy = `week: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    break
+                case 'month':
+                    intervalCopy = `month: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    break
+                case 'year':
+                    intervalCopy = `year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    break                             
+                default:
+            }
         return (
             <div>                  
                 <Navbar variant="dark" expand="lg">    
                     <Navbar.Brand href="/">   
-                        {loadingSpinner(this.props.loading,intervalCopy)}                
+                        {/*loadingSpinner(this.props.transactions,intervalCopy)*/}                
                     </Navbar.Brand>       
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      

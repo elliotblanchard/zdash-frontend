@@ -11,11 +11,12 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 const Transactions = ({transactions}) => {
+		//console.log(transactions)
 		return (
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}
 			cols={cols}
-			>
+			>	
 				<div style={roundedBox}
 					className="grid-cell"
 					key="1"
@@ -31,7 +32,7 @@ const Transactions = ({transactions}) => {
 				>
 					By Type: Shielded Only
 					<Bar transactions={transactions} shieldedOnly={true}/>
-				</div>					 
+				</div>			 
 				<div style={roundedBox}
 					className="grid-cell"
 					key="2"
@@ -39,7 +40,8 @@ const Transactions = ({transactions}) => {
 				>
 					By Type: Percentage of Total
 					<Bump transactions={transactions}/>
-				</div>              
+				</div>      
+				      
 				<div style={roundedBox}
 					className="grid-cell"
 					key="4"
@@ -47,7 +49,7 @@ const Transactions = ({transactions}) => {
 				>
 					By Type: Totals for Time Period
 					<Pie  transactions={transactions}/>
-				</div>                					             
+				</div>               					             
 			</ResponsiveGridLayout>                
 		)	
  }

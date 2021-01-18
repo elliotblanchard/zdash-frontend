@@ -20,7 +20,9 @@ class App extends React.Component {
         <Container bg="dark">
           <NavTop />
           <Switch>
-            <Route exact path='/' component={TransactionsContainer} />
+            <Route exact path='/'>
+              <TransactionsContainer />
+            </Route>
             <Route path='/accounts/:id' render={(routerProps) => <AccountDetailContainer {...routerProps}/>}/>
             <Route path='/accounts' component={AccountsContainer} />
             <Route path='/network' component={NetworksContainer} />
