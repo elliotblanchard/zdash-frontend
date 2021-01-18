@@ -47,7 +47,7 @@ const Transactions = ({transactions}) => {
 				>
 					By Type: Totals for Time Period
 					<Pie  transactions={transactions}/>
-				</div>                  					             
+				</div>                					             
 			</ResponsiveGridLayout>                
 		)	
  }

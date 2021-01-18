@@ -5,11 +5,9 @@ import fill from '../nivostyles/fill.js'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
 function Pie(props) {       
-        //let total = 0
         let categoryHash = {}   
         let data = []
         props.transactions.forEach((transaction) => {
-            //total += transaction.total
             transaction.categories.forEach((category) => {
                 let categoryName = category[0].toLowerCase()
                 if (!categoryHash[categoryName]) {
@@ -44,7 +42,7 @@ function Pie(props) {
                     anchor: 'right',
                     direction: 'column',
                     justify: false,
-                    translateX: -100,
+                    translateX: -50,
                     translateY: 0,
                     itemsSpacing: 10,
                     itemWidth: 100,

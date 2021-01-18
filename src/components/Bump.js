@@ -5,6 +5,7 @@ import fill from '../nivostyles/fill.js'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
 function Bump(props) { 
+    console.log(props)
     let categoryHash = {}   
     let data = []
     props.transactions.forEach((transaction) => {
@@ -43,7 +44,7 @@ function Bump(props) {
             legendPosition: 'middle',
             legendOffset: 32
         }}
-            animate={true}
+            animate={false}
             motionStiffness={90}
             motionDamping={15}
         />                      

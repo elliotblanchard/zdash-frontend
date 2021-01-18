@@ -5,7 +5,8 @@ const rootReducer = combineReducers({
     transactions: transactionsReducer,
     accounts: accountsReducer,
     accountDetail: accountDetailReducer,
-    networks: networksReducer
+    networks: networksReducer,
+    loading: loadingReducer
   });
    
 export default rootReducer;
@@ -70,11 +71,13 @@ function accountDetailReducer(state = {
     switch (action.type) {
         case 'LOADING_ACCOUNT_DETAIL':
             return {
-                ...state
+                ...state,
+                loading: true
             }        
         case 'ADD_ACCOUNT_DETAIL':
             return {
-                ...action.payload
+                ...action.payload,
+                loading: false
             }
         default:
             return state
@@ -115,3 +118,19 @@ function accountDetailReducer(state = {
     }
   }  
 
+  function loadingReducer(state = {
+    loading: true
+  }, action) {
+    switch (action.type) {
+        case 'LOADING_FLAG':
+            return {
+                loading: true
+            }        
+        case 'LOADED_FLAG':
+            return {
+                loading: false
+            }
+        default:
+            return state
+    }
+  }

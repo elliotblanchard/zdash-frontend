@@ -2,8 +2,17 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import Spinner from 'react-bootstrap/Spinner'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/fetchTransactions'
+
+function loadingSpinner(loading,intervalCopy) {
+    if (loading.loading === true) {
+        return (<Spinner animation="border" variant="light" />)
+    } else {
+        return (`Transactions for previous ${intervalCopy}`)
+    }
+}
 
 class TransactionsInput extends React.Component {
     
@@ -24,8 +33,8 @@ class TransactionsInput extends React.Component {
            time: event.target.value
         })        
         this.props.fetchTransactions(event.target.value)
-    }     
-
+    }   
+    
     render() {
         let intervalCopy = ""
         switch(this.props.transactions[0].unit) {
@@ -45,13 +54,12 @@ class TransactionsInput extends React.Component {
                 intervalCopy = `year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                 break                             
             default:
-                // code block
         }
         return (
             <div>                  
                 <Navbar variant="dark" expand="lg">    
-                    <Navbar.Brand href="/">                  
-                        Transactions for previous {intervalCopy} 
+                    <Navbar.Brand href="/">   
+                        {loadingSpinner(this.props.loading,intervalCopy)}                
                     </Navbar.Brand>       
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      
