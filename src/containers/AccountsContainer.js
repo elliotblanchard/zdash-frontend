@@ -1,7 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Spinner from 'react-bootstrap/Spinner'
-import Navbar from 'react-bootstrap/Navbar'
 import {fetchAccounts} from '../actions/fetchAccounts'
 import Accounts from '../components/Accounts'
 
@@ -14,7 +12,7 @@ class AccountsContainer extends React.Component {
     render() {
         return (
             <div>
-                <Accounts accounts={this.props.accounts}/>
+                <Accounts accounts={this.props.accounts} loading={this.props.loading}/>
             </div>
         )
     }
@@ -22,6 +20,7 @@ class AccountsContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        loading: state.loading,         
         accounts: state.accounts
     }
 }

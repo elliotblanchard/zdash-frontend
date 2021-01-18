@@ -26,32 +26,31 @@ function truncateArray(arr) {
   }
 }
 
-function loadingSpinner(accountDetail) {
-  console.log(accountDetail)
-	if (accountDetail.accountDetail.address === "") {
+function loadingSpinner(loading,accountDetail) {
+	if (loading.loading === true) {
 		return (<Spinner animation="border" variant="light" />)
 	} else {
-		return (`Address: ${accountDetail.accountDetail.address}`)
+		return (`Address: ${accountDetail.address}`)
 	}
 }
+ const AccountDetail = ({loading, accountDetail}) => {
 
- const AccountDetail = (accountDetail) => {
-  const firstDateObject = new Date(accountDetail.accountDetail.firstSeen * 1000)
+  const firstDateObject = new Date(accountDetail.firstSeen * 1000)
   const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
   const firstShortDate = firstLongDate.split(",")[0]
 
-  const lastDateObject = new Date(accountDetail.accountDetail.lastSeen * 1000)
+  const lastDateObject = new Date(accountDetail.lastSeen * 1000)
   const lastLongDate = `${lastDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
   const lastShortDate = lastLongDate.split(",")[0]  
 
-  const recvTransShort = truncateArray(accountDetail.accountDetail.recvTrans)
-  const sentTransShort = truncateArray(accountDetail.accountDetail.sentTrans)
+  const recvTransShort = truncateArray(accountDetail.recvTrans)
+  const sentTransShort = truncateArray(accountDetail.sentTrans)
   
   return (
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand href="/">                  
-                  {loadingSpinner(accountDetail)} 
+                  {loadingSpinner(loading,accountDetail)} 
                 </Navbar.Brand>                      
             </Navbar>           
             <ResponsiveGridLayout
@@ -65,7 +64,7 @@ function loadingSpinner(accountDetail) {
                 >
                   
                   <p>Balance</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.balance).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.balance).toFixed(4))}</h1>
                 </div>  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -89,7 +88,7 @@ function loadingSpinner(accountDetail) {
                   data-grid={{ x: 3, y: 0, w: 1, h: 1 }}
                 >
                   <p>Mined count</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.minedCount).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.minedCount).toFixed(4))}</h1>
                 </div>                
                 <div style={roundedBox}
                   className="grid-cell"
@@ -97,7 +96,7 @@ function loadingSpinner(accountDetail) {
                   data-grid={{ x: 0, y: 1, w: 1, h: 1 }}
                 >
                   <p>Total recieved</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.totalRecv).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.totalRecv).toFixed(4))}</h1>
                 </div>  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -105,7 +104,7 @@ function loadingSpinner(accountDetail) {
                   data-grid={{ x: 1, y: 1, w: 1, h: 1 }}
                 >
                   <p>Recieved count</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.recvCount).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.recvCount).toFixed(4))}</h1>
                 </div>                  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -113,7 +112,7 @@ function loadingSpinner(accountDetail) {
                   data-grid={{ x: 2, y: 1, w: 1, h: 1 }}
                 >
                   <p>Total sent</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.totalSent).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.totalSent).toFixed(4))}</h1>
                 </div>     
                 <div style={roundedBox}
                   className="grid-cell"
@@ -121,7 +120,7 @@ function loadingSpinner(accountDetail) {
                   data-grid={{ x: 3, y: 1, w: 1, h: 1 }}
                 >
                   <p>Sent count</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.accountDetail.sentCount).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(accountDetail.sentCount).toFixed(4))}</h1>
                 </div>     
                 <div style={roundedBox}
                   className="grid-cell"
@@ -147,7 +146,7 @@ function loadingSpinner(accountDetail) {
                       ))
                     }                  
                 </div>                                                                                                
-            </ResponsiveGridLayout>                     
+            </ResponsiveGridLayout>                          
         </div>
     )
  }

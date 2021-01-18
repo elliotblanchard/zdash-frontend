@@ -9,28 +9,10 @@ class NetworksContainer extends React.Component {
         this.props.fetchNetworks()
     }
 
-    //handleLoading = () => {
-        //if( (this.props.networks.loading) || (!this.props.networks.networks) || (this.props.networks.networks.length === 0) ) {
-        //  return (
-        //    <div>
-        //        <Navbar variant="dark" expand="lg">
-        //            <Spinner animation="border" variant="light" />
-        //        </Navbar>
-        //    </div>
-        //    )
-        //} else {
-        //  return (
-        //    <div>
-        //        <Networks networks={this.props.networks.networks}/>
-        //    </div>
-        //  )
-        //}
-    //}
-
     render() {
         return (
             <div>
-                <Networks networks={this.props.networks}/>
+                <Networks networks={this.props.networks} loading={this.props.loading}/>
             </div>
         )
     }
@@ -38,6 +20,7 @@ class NetworksContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        loading: state.loading,        
         networks: state.networks
     }
 }

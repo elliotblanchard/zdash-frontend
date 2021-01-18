@@ -10,20 +10,20 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 // Handles the responsive nature of the grid
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
-function loadingSpinner(accounts) {
-	if (accounts[0].address === "") {
+function loadingSpinner(loading) {
+	if (loading.loading === true) {
 		return (<Spinner animation="border" variant="light" />)
 	} else {
 		return ("Recently active accounts")
 	}
 }
 
-const Accounts = ({accounts}) => {
+const Accounts = ({accounts, loading}) => {
     return (
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand href="/">                  
-                   {loadingSpinner(accounts)}
+                   {loadingSpinner(loading)}
                 </Navbar.Brand>                      
             </Navbar>                
             <ResponsiveGridLayout

@@ -15,20 +15,20 @@ function numberWithCommas(x) {
 	})
 }
 
-function loadingSpinner(networks) {
-	if (networks.name === "") {
+function loadingSpinner(loading) {
+	if (loading.loading === true) {
 		return (<Spinner animation="border" variant="light" />)
 	} else {
 		return ("Mainnet statistics")
 	}
 }
 
-const Networks = ({networks}) => {
+const Networks = ({networks, loading}) => {
     return (
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand>                  
-                    {loadingSpinner(networks)} 
+                    {loadingSpinner(loading)} 
                 </Navbar.Brand>                      
             </Navbar> 
 			<ResponsiveGridLayout

@@ -1,4 +1,3 @@
-import { StaticRouter } from "react-router-dom";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -71,13 +70,11 @@ function accountDetailReducer(state = {
     switch (action.type) {
         case 'LOADING_ACCOUNT_DETAIL':
             return {
-                ...state,
-                loading: true
+                ...state
             }        
         case 'ADD_ACCOUNT_DETAIL':
             return {
-                ...action.payload,
-                loading: false
+                ...action.payload
             }
         default:
             return state
@@ -105,13 +102,11 @@ function accountDetailReducer(state = {
     switch (action.type) {
         case 'LOADING_NETWORKS':
             return {
-                ...state,
-                loading: true
+                ...state
             }        
         case 'ADD_NETWORKS':
             return {
-                ...action.payload,
-                loading: false
+                ...action.payload
             }
         default:
             return state

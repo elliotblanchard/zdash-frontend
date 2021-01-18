@@ -8,7 +8,6 @@ import { fetchTransactions } from '../actions/fetchTransactions'
 
 
 function loadingSpinner(loading,intervalCopy) {
-    console.log(loading)
     if (loading.loading === false) {
         return (`Transactions for previous ${intervalCopy}`)
     } else {
