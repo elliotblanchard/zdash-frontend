@@ -6,7 +6,6 @@ import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
 function prepData(props)  {
     let categoryHash = {} 
-    let interval = 2
     for (let i = 0; i < props.transactions.length; i++) {
         props.transactions[i].categories.forEach((category) => {
             let categoryName = category[0].toLowerCase()
@@ -28,7 +27,7 @@ function Bump(props) {
     return ( 
         <ResponsiveAreaBump
         data={data}
-        margin={{ top: 50, right: 120, bottom: 75, left: 120 }}
+        margin={{ top: 25, right: 120, bottom: 75, left: 120 }}
         spacing={8}            
         colors={{ scheme: 'nivo' }}
         isInteractive={false}
