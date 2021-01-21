@@ -13,11 +13,11 @@ function Pie(props) {
                 if (!categoryHash[categoryName]) {
                     categoryHash[categoryName] = {id:categoryName,label:categoryName, value:0}
                 } 
-                categoryHash[categoryName].value += category[1]
+                categoryHash[categoryName].value += parseInt(category[1])
             })                
         }) 
         data = Object.values(categoryHash)       
-
+        console.log(data)
         return ( 
             <ResponsivePie
             data={data}
