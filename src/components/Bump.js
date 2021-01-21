@@ -7,8 +7,7 @@ import axisColorSettings from '../nivostyles/axisColorSettings.js'
 function prepData(props)  {
     let categoryHash = {} 
     let interval = 2
-    if (props.transactions.length > 25) interval = 1 // Area bump dosen't work well with more than 25 columns - like in a month view
-    for (let i = 0; i < props.transactions.length; i = i + interval) {
+    for (let i = 0; i < props.transactions.length; i++) {
         props.transactions[i].categories.forEach((category) => {
             let categoryName = category[0].toLowerCase()
             if (!categoryHash[categoryName]) {

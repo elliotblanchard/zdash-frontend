@@ -17,7 +17,6 @@ function Pie(props) {
             })                
         }) 
         data = Object.values(categoryHash)       
-        console.log(data)
         return ( 
             <ResponsivePie
             data={data}
