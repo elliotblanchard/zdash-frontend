@@ -49,7 +49,7 @@ function Bar(props) {
             valueScale={{ type: 'linear' }}
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
-            isInteractive={false}
+            isInteractive={true}
             theme={axisColorSettings.theme}
             defs={defs}
             fill={fill}
@@ -65,6 +65,11 @@ function Bar(props) {
                 legendPosition: 'middle',
                 legendOffset: -50
             }}
+            tooltip={({ id, value }) => (
+                <span style={{ fontSize: 14 }}>
+                    {id}: {value}
+                </span>
+            )}            
             labelSkipWidth={22}
             labelSkipHeight={12}
             labelTextColor="#333"

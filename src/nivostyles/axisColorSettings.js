@@ -1,7 +1,12 @@
 const axisColorSettings = {
     theme: {
-    textColor: '#bbb',       
-    },
-    }  
+        tooltip: {
+            container: { 
+                background: '#334', 
+            },
+        },
+        textColor: '#ccc',       
+    },    
+}  
 
 export default axisColorSettings

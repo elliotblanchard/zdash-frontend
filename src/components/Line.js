@@ -1,7 +1,5 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line'
-import defs from '../nivostyles/defs.js'
-import fill from '../nivostyles/fill.js'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 
 function prepData(props)  {
@@ -56,9 +54,7 @@ function Line(props) {
     return ( 
         <ResponsiveLine
         data={data}
-        theme={axisColorSettings.theme}            
-        defs={defs}
-        fill={fill}   
+        theme={axisColorSettings.theme}              
         borderColor={{ from: 'fill' }} 
         boarderOpacity={0}   
         startLabelTextColor="#bbb" 
@@ -68,7 +64,7 @@ function Line(props) {
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
         yFormat=" >-.2f"
         curve="cardinal"
-        isInteractive={false}
+        isInteractive={true}
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -89,7 +85,7 @@ function Line(props) {
             legendOffset: -40,
             legendPosition: 'middle'
         }}
-        colors={{ datum: 'color' }}
+        colors={{ datum: 'color' }}       
         lineWidth={3}
         pointSize={12}
         pointColor={{ from: 'color', modifiers: [] }}
