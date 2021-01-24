@@ -47,10 +47,13 @@ function prepData(props)  {
     return categoryHash
 }
 
+function printProps(prop) {
+    console.log(prop)
+}
+
 function Line(props) {   
     let data = []
     data = Object.values(prepData(props))   
-
     return ( 
         <ResponsiveLine
         data={data}
@@ -85,6 +88,11 @@ function Line(props) {
             legendOffset: -40,
             legendPosition: 'middle'
         }}
+        tooltip={({ point, value }) => (
+            <span style={{ fontSize: 14 }}>
+                {point.serieId}: {point.data.yFormatted}%
+            </span>
+        )}         
         colors={{ datum: 'color' }}       
         lineWidth={3}
         pointSize={12}
@@ -120,33 +128,6 @@ function Line(props) {
                 ]
             }
         ]}
-
-
-        /*
-        spacing={8}            
-        isInteractive={true}
-        theme={axisColorSettings.theme}            
-        defs={defs}
-        fill={fill}   
-        borderColor={{ from: 'fill' }} 
-        boarderOpacity={0}   
-        startLabelTextColor="#bbb" 
-        endLabelTextColor="#bbb"  
-        blendMode="normal"  
-        startLabel="id"
-        axisTop={null}
-        axisBottom={{
-            tickSize: 0,
-            tickPadding: 5,
-            tickRotation: 90,
-            legend: '',
-            legendPosition: 'middle',
-            legendOffset: 32
-        }}
-            animate={false}
-            motionStiffness={90}
-            motionDamping={15}
-        */
         />                      
     )                       
 }

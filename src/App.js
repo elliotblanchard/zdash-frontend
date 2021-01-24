@@ -18,7 +18,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <Container bg="dark">
+        <Container bg="dark" fluid="md">
           <NavTop />
           <Switch>
             <Route exact path='/'>

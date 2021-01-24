@@ -17,8 +17,8 @@ const Transactions = ({transactions}) => {
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}
 			cols={cols}
-            isDraggable={true}
-            isResizable={true} 			
+            isDraggable={false}
+            isResizable={false} 			
 			>	
 				<div style={roundedBox}
 					className="grid-cell"

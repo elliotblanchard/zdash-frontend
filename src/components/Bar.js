@@ -38,7 +38,7 @@ function Bar(props) {
                 legend: '',
                 legendPosition: 'middle',
                 legendOffset: 32
-            }       
+            }      
         return ( 
             <ResponsiveBar
             data={data}
