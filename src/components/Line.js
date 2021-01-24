@@ -89,7 +89,7 @@ function Line(props) {
             legendPosition: 'middle'
         }}
         tooltip={({ point, value }) => (
-            <span style={{ fontSize: 14 }}>
+            <span style={{ background: '#334', padding: '10px 10px', fontSize: 14 }}>
                 {point.serieId}: {point.data.yFormatted}%
             </span>
         )}         
