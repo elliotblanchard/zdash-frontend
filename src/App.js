@@ -18,7 +18,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <Container bg="dark" fluid="md">
+        <Container bg="dark" fluid="lg">
           <NavTop />
           <Switch>
             <Route exact path='/'>
@@ -29,7 +29,7 @@ class App extends React.Component {
             <Route path='/accounts' component={AccountsContainer} />
             <Route path='/network' component={NetworksContainer} />
           </Switch>
-          <Navbar variant="dark" expand="lg" sticky="bottom"> 
+          <Navbar variant="dark" expand="sm" sticky="bottom"> 
                 <Navbar.Collapse>
                   <Nav>
                     <Nav.Item>                         

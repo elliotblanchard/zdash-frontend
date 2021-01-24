@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 const NavTop = () => {
     return (
         <div>
-            <Navbar variant="dark" expand="lg">
+            <Navbar variant="dark" expand="sm">
                 <Navbar.Brand href="/">
                     <img
                         alt=""

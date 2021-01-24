@@ -61,7 +61,7 @@ class TransactionsInput extends React.Component {
             }
         return (
             <div>                  
-                <Navbar variant="dark" expand="lg">    
+                <Navbar variant="dark" expand="sm">    
                     <Navbar.Brand href="/">   
                         {loadingSpinner(this.props.loading,intervalCopy)}                
                     </Navbar.Brand>       
