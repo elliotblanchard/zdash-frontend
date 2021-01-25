@@ -19,11 +19,9 @@ function loadingSpinner(loading,intervalCopy) {
 
 class TransactionsInput extends React.Component {
     
-    state = {time: 'day'} // Default
+    state = {time: 'day'}
 
     handleClick = (event) => {
-        // Create action for a specific time period
-        //console.log(event.target.attributes[0].nodeValue)
         this.setState ({
            time: event.target.attributes[0].nodeValue
         })        
@@ -31,7 +29,6 @@ class TransactionsInput extends React.Component {
     }    
 
     handleChange = (event) => {
-        // Create action for a specific time period
         this.setState ({
            time: event.target.value
         })        

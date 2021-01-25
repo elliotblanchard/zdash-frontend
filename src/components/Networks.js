@@ -34,6 +34,8 @@ const Networks = ({networks, loading}) => {
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}
 			cols={cols}
+            isDraggable={false}
+            isResizable={false} 			
 			>			
 				<div style={roundedBox}
 					className="grid-cell"
