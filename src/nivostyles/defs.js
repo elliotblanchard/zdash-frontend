@@ -62,7 +62,15 @@ const defs = [
             { offset: 0, color: '#2EADDB' },
             { offset: 100, color: '#2EADDB' },
         ],
-    }                                         
+    },
+    {
+        id: 'shielded_coinbase',
+        type: 'linearGradient',
+        colors: [
+            { offset: 0, color: '#F5A92D' },
+            { offset: 100, color: '#F5A92D' },
+        ],
+    }                                             
 ]
 
 export default defs

@@ -5,55 +5,76 @@ import axisColorSettings from '../nivostyles/axisColorSettings.js'
 function prepData(props)  {
     let categoryHash = {} 
     for (let i = 0; i < props.transactions.length; i++) {
+        let categoryName = ''
+        let categoryColor = ''
+        let shieldedTotal = 0
         props.transactions[i].categories.forEach((category) => {
-            let categoryName = category[0].toLowerCase()
-            let categoryColor = ''
-            switch (categoryName) {
-                case 'sapling deshielding':
-                    categoryColor = '#48F9B8'
-                    break
-                case 'sapling shielded':
-                    categoryColor = '#52F25D'
-                    break                    
-                case 'sapling shielding':
-                    categoryColor = '#B5F948'
-                    break 
-                case 'sprout deshielding':
-                    categoryColor = '#F93611'
-                    break                      
-                case 'sprout shielded':
-                    categoryColor = '#F21D81'
-                    break 
-                case 'sprout shielding':
-                    categoryColor = '#BE11F9'
-                    break   
-                case 'transparent':
-                    categoryColor = '#2D8DFA'
-                    break 
-                case 'transparent coinbase':
-                    categoryColor = '#2EADDB'
-                    break
-                default:
-                    categoryColor = '#AAAAAA'                                                                                      
+            if (!props.z2zOnly) { 
+                categoryName = category[0].toLowerCase()
+                switch (categoryName) {
+                    case 'sapling deshielding':
+                        categoryColor = '#48F9B8'
+                        break
+                    case 'sapling shielded':
+                        categoryColor = '#52F25D'
+                        break                    
+                    case 'sapling shielding':
+                        categoryColor = '#B5F948'
+                        break 
+                    case 'sprout deshielding':
+                        categoryColor = '#F93611'
+                        break                      
+                    case 'sprout shielded':
+                        categoryColor = '#F21D81'
+                        break 
+                    case 'sprout shielding':
+                        categoryColor = '#BE11F9'
+                        break   
+                    case 'transparent':
+                        categoryColor = '#2D8DFA'
+                        break 
+                    case 'transparent coinbase':
+                        categoryColor = '#2EADDB'
+                        break
+                    case 'shielded coinbase':
+                        categoryColor = '#F5A92D'
+                        break                     
+                    default:
+                        categoryColor = '#AAAAAA'                                                                                      
+                }
+                if (!categoryHash[categoryName]) {
+                    categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
+                } 
+                const percentage = Number((category[1] / props.transactions[i].total).toFixed(3)*100 )
+                categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
             }
+            else {
+                categoryName = 'Fully shielded'
+                categoryColor = '#65E336'   
+                if ( (category[0].toLowerCase() === 'sapling shielded') || (category[0].toLowerCase() === 'sprout shielded') ) {
+                    shieldedTotal += category[1]
+                }             
+            }
+        }) 
+        if (props.z2zOnly) { 
             if (!categoryHash[categoryName]) {
                 categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
-            } 
-            const percentage = Number((category[1] / props.transactions[i].total).toFixed(3)*100 )
-            categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
-        })                
+            }  
+            const percentage = Number((shieldedTotal / props.transactions[i].total).toFixed(3)*100 )  
+            categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})     
+        }           
     }
 
     return categoryHash
 }
 
-function printProps(prop) {
-    console.log(prop)
-}
 
 function Line(props) {   
     let data = []
-    data = Object.values(prepData(props))   
+    data = Object.values(prepData(props)) 
+    if (props.z2zOnly) { 
+        console.log(data)
+    }
     return ( 
         <ResponsiveLine
         data={data}
@@ -66,7 +87,7 @@ function Line(props) {
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
         yFormat=" >-.2f"
-        curve="cardinal"
+        curve="linear"
         isInteractive={true}
         axisTop={null}
         axisRight={null}

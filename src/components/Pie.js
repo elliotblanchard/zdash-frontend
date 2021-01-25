@@ -34,6 +34,9 @@ function Pie(props) {
                     case 'transparent coinbase':
                         categoryColor = '#2EADDB'
                         break
+                    case 'shielded coinbase':
+                        categoryColor = '#F5A92D'
+                        break                        
                     default:
                         categoryColor = '#AAAAAA'                                                                                      
                 }                

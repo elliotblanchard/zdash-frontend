@@ -12,7 +12,6 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 const Transactions = ({transactions}) => {
-		//console.log(transactions)
 		return (
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}
@@ -25,39 +24,47 @@ const Transactions = ({transactions}) => {
 					key="1"
 					data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 				>
-					By Type: All
-					<Bar transactions={transactions} shieldedOnly={false}/>
-				</div>
+					Fully Shielded: Percentage of Total
+					<Line transactions={transactions} z2zOnly={true}/>
+				</div>			
 				<div style={roundedBox}
 					className="grid-cell"
 					key="2"
 					data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
 				>
-					By Type: Shielded Only
-					<Bar transactions={transactions} shieldedOnly={true}/>
-				</div>	
+					All Transactions: Percentage of Total
+					<Line transactions={transactions} z2zOnly={false}/>
+				</div>			
 				<div style={roundedBox}
 					className="grid-cell"
 					key="3"
 					data-grid={{ x: 0, y: 6, w: 4, h: 3 }}
 				>
-					By Type: Percentage of Total
-					<Line transactions={transactions}/>
-				</div> 						 
+					All Transactions
+					<Bar transactions={transactions} shieldedOnly={false}/>
+				</div>
 				<div style={roundedBox}
 					className="grid-cell"
 					key="4"
 					data-grid={{ x: 0, y: 9, w: 4, h: 3 }}
 				>
-					By Type: Percentage of Total
-					<Bump transactions={transactions}/>
-				</div>       
+					Shielded Transactions
+					<Bar transactions={transactions} shieldedOnly={true}/>
+				</div>	 						 
 				<div style={roundedBox}
 					className="grid-cell"
 					key="5"
 					data-grid={{ x: 0, y: 12, w: 4, h: 3 }}
 				>
-					By Type: Totals for Time Period
+					All Transactions: Percentage of Total
+					<Bump transactions={transactions}/>
+				</div>       
+				<div style={roundedBox}
+					className="grid-cell"
+					key="6"
+					data-grid={{ x: 0, y: 15, w: 4, h: 3 }}
+				>
+					Totals for Time Period
 					<Pie  transactions={transactions}/>
 				</div>               					             
 			</ResponsiveGridLayout>                

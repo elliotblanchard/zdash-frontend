@@ -46,7 +46,13 @@ const fill = [
             id: 'transparent coinbase'
         },
         id: 'transparent_coinbase'
-    },                
+    }, 
+    {
+        match: {
+            id: 'shielded coinbase'
+        },
+        id: 'shielded_coinbase'
+    },                    
 ]
 
 export default fill
