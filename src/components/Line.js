@@ -68,6 +68,13 @@ function prepData(props)  {
     return categoryHash
 }
 
+function setYScale(props)  {
+    if (props.z2zOnly) { 
+        return({ type: 'linear', min: '0', max: '50', stacked: false, reverse: false })
+    } else {
+        return({ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false })
+    }
+}
 
 function Line(props) {   
     let data = []
@@ -85,7 +92,7 @@ function Line(props) {
         endLabelTextColor="#bbb"         
         margin={{ top: 50, right: 150, bottom: 75, left: 80 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
+        yScale={setYScale(props)}
         yFormat=" >-.2f"
         curve="linear"
         isInteractive={true}
