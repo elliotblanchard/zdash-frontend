@@ -21,11 +21,7 @@ function transactionsReducer(state = [
         unit: ""
     }     
 ], action) {
-    switch (action.type) {
-        case 'LOADING_TRANSACTIONS':
-            return [
-                ...state
-            ]         
+    switch (action.type) {       
         case 'ADD_TRANSACTIONS':
             return [
                 ...action.payload
@@ -40,11 +36,7 @@ function accountsReducer(state = [
         address: ""
     }
 ], action) {
-    switch (action.type) {
-        case 'LOADING_ACCOUNTS':
-            return [
-                    ...state
-            ]        
+    switch (action.type) {       
         case 'ADD_ACCOUNTS':
             return [
                     ...action.payload                
@@ -67,11 +59,7 @@ function accountDetailReducer(state = {
     totalRecv: 0.0,
     totalSent: 0
 }, action) {
-    switch (action.type) {
-        case 'LOADING_ACCOUNT_DETAIL':
-            return {
-                ...state
-            }        
+    switch (action.type) {      
         case 'ADD_ACCOUNT_DETAIL':
             return {
                 ...action.payload
@@ -99,11 +87,7 @@ function accountDetailReducer(state = {
     transactions: "",
     version: ""
   }, action) {
-    switch (action.type) {
-        case 'LOADING_NETWORKS':
-            return {
-                ...state
-            }        
+    switch (action.type) {       
         case 'ADD_NETWORKS':
             return {
                 ...action.payload

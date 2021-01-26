@@ -1,6 +1,7 @@
 import React from 'react'
 import { ResponsiveAreaBump } from '@nivo/bump'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
+import assignColors from '../nivostyles/assignColors.js'
 
 function prepData(props)  {
     let categoryHash = {} 
@@ -8,37 +9,8 @@ function prepData(props)  {
         props.transactions[i].categories.forEach((category) => {
             let categoryName = category[0].toLowerCase()
             let categoryColor = ''
-            switch (categoryName) {
-                case 'sapling deshielding':
-                    categoryColor = '#48F9B8'
-                    break
-                case 'sapling shielded':
-                    categoryColor = '#52F25D'
-                    break                    
-                case 'sapling shielding':
-                    categoryColor = '#B5F948'
-                    break 
-                case 'sprout deshielding':
-                    categoryColor = '#F93611'
-                    break                      
-                case 'sprout shielded':
-                    categoryColor = '#F21D81'
-                    break 
-                case 'sprout shielding':
-                    categoryColor = '#BE11F9'
-                    break   
-                case 'transparent':
-                    categoryColor = '#2D8DFA'
-                    break 
-                case 'transparent coinbase':
-                    categoryColor = '#2EADDB'
-                    break
-                case 'shielded coinbase':
-                    categoryColor = '#F5A92D'
-                    break                     
-                default:
-                    categoryColor = '#AAAAAA'                                                                                      
-            }          
+            categoryColor = assignColors(categoryName)
+        
             if (!categoryHash[categoryName]) {
                 categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
             } 
