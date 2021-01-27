@@ -1,75 +1,48 @@
-# Getting Started with Create React App
+# Zdash: Live analytics for Zcash
+A live analytics dashboard for private transactions in the Zcash cryptocurrency
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features :sparkles:
+* The only source online for data on all categories of Zcash transactions
+* Live Zcash network data
+* Browse recently active Zcash accounts
+* Fast analysis for millions of transactions
+* Responsive data visualization
 
-## Available Scripts
+## Built With :eyes:
+* React front end
+* Redux to manage state
+* Thunk middleware for async requests via RESTful API calls
+* SPA with React Router for client-side routing
+* [Nivo](https://nivo.rocks) data viz for interactive SVG charts
+* [React Bootstrap](https://react-bootstrap.github.io) framework and CSS for styling
+* [React Grid Layout](https://www.npmjs.com/package/react-grid-layout) for chart and data organization
+* Rails backend
+* Scheduled Rake tasks to import latest transaction data
+* [RPCJson](https://rubygems.org/gems/rpcjson) for fast RPC calls to blockchain data
+* [ActiveRecord Import](https://rubygems.org/gems/activerecord-import) for optimized transaction import
+* 2.2 million+ record PostgreSQL database
 
-In the project directory, you can run:
 
-### `yarn start`
+## Get Started
+Visit https://www.zdash.info/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Or install:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Fork and clone Rails API backend:
+* cd zdash-backend
+* run bundle install
+* run rake db:create
+* run rake db:migrate
+* run rails s
 
-### `yarn test`
+### Fork this repository:
+* git clone to your local directory
+* cd zdash-frontend
+* run npm install
+* run npm start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributors Guide 👋
+Bug reports and pull requests are welcome on GitHub at https://github.com/elliotblanchard/zdash-frontend. This project is intended to be a safe, welcoming space for collaboration.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# Build notes:
- * Potential charting solution: https://nivo.rocks/
-   * https://nivo.rocks/bar/
-   * https://dev.to/brettmstevens7/building-simple-data-visualizations-with-react-9em
+## License
+The app is available as open source under the terms of the MIT License.
