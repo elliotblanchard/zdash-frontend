@@ -1,8 +1,8 @@
 # Zdash: Live analytics for Zcash
-A live analytics dashboard for private transactions in the Zcash cryptocurrency
+Dashboard for private transactions in the Zcash cryptocurrency
 
 ## Features :sparkles:
-* The only source online for data on all categories of Zcash transactions
+* Only source online for data on all categories of Zcash transactions
 * Live Zcash network data
 * Browse recently active Zcash accounts
 * Fast analysis for millions of transactions
@@ -10,17 +10,17 @@ A live analytics dashboard for private transactions in the Zcash cryptocurrency
 
 ## Built With :eyes:
 * React front end
-* Redux to manage state
-* Thunk middleware for async requests via RESTful API calls
-* SPA with React Router for client-side routing
-* [Nivo](https://nivo.rocks) data viz for interactive SVG charts
-* [React Bootstrap](https://react-bootstrap.github.io) framework and CSS for styling
-* [React Grid Layout](https://www.npmjs.com/package/react-grid-layout) for chart and data organization
+  * Redux to manage state
+  * Thunk middleware for async requests via RESTful API calls
+  * SPA with React Router for client-side routing
+  * [Nivo](https://nivo.rocks) data viz for interactive SVG charts
+  * [React Bootstrap](https://react-bootstrap.github.io) framework and CSS for styling
+  * [React Grid Layout](https://www.npmjs.com/package/react-grid-layout) for chart and data organization
 * Rails backend
-* Scheduled Rake tasks to import latest transaction data
-* [RPCJson](https://rubygems.org/gems/rpcjson) for fast RPC calls to blockchain data
-* [ActiveRecord Import](https://rubygems.org/gems/activerecord-import) for optimized transaction import
-* 2.2 million+ record PostgreSQL database
+  * Scheduled Rake tasks to import latest transaction data
+  * [RPCJson](https://rubygems.org/gems/rpcjson) for fast RPC calls to blockchain data
+  * [ActiveRecord Import](https://rubygems.org/gems/activerecord-import) for optimized transaction import
+  * 2.2 million+ record PostgreSQL database
 
 
 ## Get Started
@@ -29,6 +29,7 @@ Visit https://www.zdash.info/
 ## Or install:
 
 ### Fork and clone Rails API backend:
+* git clone to your local directory
 * cd zdash-backend
 * run bundle install
 * run rake db:create
