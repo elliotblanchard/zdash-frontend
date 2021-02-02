@@ -7,7 +7,7 @@ import Transactions from '../components/Transactions'
 class TransactionsContainer extends React.Component {
   
     componentDidMount() {
-        this.props.fetchTransactions('year')
+        this.props.fetchTransactions('month')
     }
        
     render() {
