@@ -2,10 +2,24 @@ import React from 'react'
 import { ResponsiveAreaBump } from '@nivo/bump'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 import assignColors from '../nivostyles/assignColors.js'
+import transactionCategories from '../nivostyles/transactionCategories.js'
 
 function prepData(props)  {
     let categoryHash = {} 
     for (let i = 0; i < props.transactions.length; i++) {
+        transactionCategories.forEach((category) => {
+            let categoryName = category
+            let categoryColor = assignColors(categoryName)
+            let categoryData = undefined
+            if (!categoryHash[categoryName]) {
+                categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
+            } 
+            categoryData = props.transactions[i].categories.find(element => element[0].toLowerCase() === category)
+            if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period
+            const percentage = Number((categoryData[1] / props.transactions[i].total).toFixed(3))
+            categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
+        })            
+        /*
         props.transactions[i].categories.forEach((category) => {
             let categoryName = category[0].toLowerCase()
             let categoryColor = ''
@@ -16,7 +30,8 @@ function prepData(props)  {
             } 
             const percentage = Number((category[1] / props.transactions[i].total).toFixed(3))
             categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
-        })                
+        })
+        */                
     }
 
     return categoryHash
