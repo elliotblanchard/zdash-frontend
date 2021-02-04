@@ -70,7 +70,15 @@ const defs = [
             { offset: 0, color: '#F5A92D' },
             { offset: 100, color: '#F5A92D' },
         ],
-    }                                             
+    },  
+    {
+        id: 'migration',
+        type: 'linearGradient',
+        colors: [
+            { offset: 0, color: '#7FA8AD' },
+            { offset: 100, color: '#7FA8AD' },
+        ],
+    }                                                
 ]
 
 export default defs

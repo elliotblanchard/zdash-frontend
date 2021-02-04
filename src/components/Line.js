@@ -35,7 +35,7 @@ function prepData(props)  {
                     categoryData = props.transactions[i].categories.find(element => element[0].toLowerCase() === category)
                     if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period
                     shieldedTotal += Number(categoryData[1])
-                    console.log(`CategoryData is: ${categoryData} and shieldedTotal is: ${shieldedTotal}`)
+                    //console.log(`CategoryData is: ${categoryData} and shieldedTotal is: ${shieldedTotal}`)
                 }             
             }            
         })

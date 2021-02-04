@@ -52,7 +52,13 @@ const fill = [
             id: 'shielded coinbase'
         },
         id: 'shielded_coinbase'
-    },                    
+    },   
+    {
+        match: {
+            id: 'migration'
+        },
+        id: 'migration'
+    },                      
 ]
 
 export default fill
