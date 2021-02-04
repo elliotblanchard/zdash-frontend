@@ -18,20 +18,7 @@ function prepData(props)  {
             if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period
             const percentage = Number((categoryData[1] / props.transactions[i].total).toFixed(3))
             categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
-        })            
-        /*
-        props.transactions[i].categories.forEach((category) => {
-            let categoryName = category[0].toLowerCase()
-            let categoryColor = ''
-            categoryColor = assignColors(categoryName)
-        
-            if (!categoryHash[categoryName]) {
-                categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
-            } 
-            const percentage = Number((category[1] / props.transactions[i].total).toFixed(3))
-            categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
-        })
-        */                
+        })                           
     }
 
     return categoryHash

@@ -5,17 +5,12 @@ import assignColors from '../nivostyles/assignColors.js'
 import transactionCategories from '../nivostyles/transactionCategories.js'
 
 function prepData(props)  {
-    //console.log(transactionCategories)
     let categoryHash = {} 
     for (let i = 0; i < props.transactions.length; i++) {
         let categoryName = ''
         let categoryColor = ''
         let categoryData = undefined
         let shieldedTotal = 0
-        // You need to cycle through assign colors - not the category hash
-        // if the category you're looking at DOES have data in the hash, use it
-        // Otherwise use zero
-        //console.log(props.transactions[i].categories)
         transactionCategories.forEach((category) => {
             if (!props.z2zOnly) {
                 categoryName = category
@@ -35,35 +30,13 @@ function prepData(props)  {
                     categoryData = props.transactions[i].categories.find(element => element[0].toLowerCase() === category)
                     if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period
                     shieldedTotal += Number(categoryData[1])
-                    //console.log(`CategoryData is: ${categoryData} and shieldedTotal is: ${shieldedTotal}`)
                 }             
             }            
         })
-        /*
-        props.transactions[i].categories.forEach((category) => {
-            if (!props.z2zOnly) { 
-                categoryName = category[0].toLowerCase()
-                categoryColor = assignColors(categoryName)
-                if (!categoryHash[categoryName]) {
-                    categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
-                } 
-                const percentage = Number((category[1] / props.transactions[i].total).toFixed(3)*100 )
-                categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})
-            }
-            else {
-                categoryName = 'Fully shielded'
-                categoryColor = '#65E336'   
-                if ( (category[0].toLowerCase() === 'sapling shielded') || (category[0].toLowerCase() === 'sprout shielded') ) {
-                    shieldedTotal += category[1]
-                }             
-            }
-        }) 
-        */
         if (props.z2zOnly) { 
             if (!categoryHash[categoryName]) {
                 categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
             }
-            //console.log(`shieldedTotal is ${shieldedTotal} and total is: ${props.transactions[i].total}`)  
             const percentage = Number((shieldedTotal / props.transactions[i].total).toFixed(3)*100 )  
             categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})     
         }           
@@ -83,7 +56,6 @@ function setYScale(props)  {
 function Line(props) {   
     let data = []
     data = Object.values(prepData(props))  
-    //console.log(data)
     return ( 
         <ResponsiveLine
         data={data}
