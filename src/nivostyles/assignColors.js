@@ -17,9 +17,11 @@ function assignColors(categoryName)  {
         case 'transparent coinbase':
             return '#2EADDB'
         case 'shielded coinbase':
-            return '#F5A92D'                    
+            return '#F5A92D'    
+        case 'migration':
+            return '#7FA8AD'                             
         default:
-            return '#AAAAAA'                                                                                      
+            return '#9BD8E0'                                                                                      
     }
 }
 
