@@ -1,13 +1,14 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
+import Form from 'react-bootstrap/Form'
+import FormControl from 'react-bootstrap/FormControl'
+import Button from 'react-bootstrap/Button'
 import roundedBox from '../nivostyles/roundedBox.js'
 import cols from '../nivostyles/cols.js'
 import breakpoints from '../nivostyles/breakpoints.js'
 import { Responsive, WidthProvider } from 'react-grid-layout'
+import { connect } from 'react-redux'
 import Spinner from 'react-bootstrap/Spinner'
-
-// Handles the responsive nature of the grid
-const ResponsiveGridLayout = WidthProvider(Responsive)
 
 function numberWithCommas(x) {
   return (x + "").replace(/\b(\d+)((\.\d+)*)\b/g, function(a, b, c) {
@@ -33,25 +34,38 @@ function loadingSpinner(loading,accountDetail) {
 		return (`Address: ${accountDetail.address}`)
 	}
 }
- const AccountDetail = ({loading, accountDetail}) => {
+class AccountDetail extends React.Component {
 
-  const firstDateObject = new Date(accountDetail.firstSeen * 1000)
-  const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
-  const firstShortDate = firstLongDate.split(",")[0]
-
-  const lastDateObject = new Date(accountDetail.lastSeen * 1000)
-  const lastLongDate = `${lastDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
-  const lastShortDate = lastLongDate.split(",")[0]  
-
-  const recvTransShort = truncateArray(accountDetail.recvTrans)
-  const sentTransShort = truncateArray(accountDetail.sentTrans)
+  state = {name: ''}    
   
-  return (
+  render() {
+    // Handles the responsive nature of the grid
+    const ResponsiveGridLayout = WidthProvider(Responsive)
+
+    const firstDateObject = new Date(this.props.accountDetail.firstSeen * 1000)
+    const firstLongDate = `${firstDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
+    const firstShortDate = firstLongDate.split(",")[0]
+  
+    const lastDateObject = new Date(this.props.accountDetail.lastSeen * 1000)
+    const lastLongDate = `${lastDateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
+    const lastShortDate = lastLongDate.split(",")[0]  
+  
+    const recvTransShort = truncateArray(this.props.accountDetail.recvTrans)
+    const sentTransShort = truncateArray(this.props.accountDetail.sentTrans)
+    
+
+    return (
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand href="/">                  
-                  {loadingSpinner(loading,accountDetail)} 
-                </Navbar.Brand>                      
+                  {loadingSpinner(this.props.loading,this.props.accountDetail)} 
+                </Navbar.Brand> 
+                <Navbar.Collapse className="justify-content-end">
+                <Form inline>
+                  <FormControl type="text" placeholder="Set name" className="mr-sm-2" />
+                  <Button variant="primary">Set</Button>
+                </Form>                   
+              </Navbar.Collapse>                                      
             </Navbar>           
             <ResponsiveGridLayout
             breakpoints={breakpoints}
@@ -64,7 +78,7 @@ function loadingSpinner(loading,accountDetail) {
                 >
                   
                   <p>Balance</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.balance).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(this.props.accountDetail.balance).toFixed(4))}</h1>
                 </div>  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -88,7 +102,7 @@ function loadingSpinner(loading,accountDetail) {
                   data-grid={{ x: 3, y: 0, w: 1, h: 1 }}
                 >
                   <p>Mined count</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.minedCount).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(this.props.accountDetail.minedCount).toFixed(4))}</h1>
                 </div>                
                 <div style={roundedBox}
                   className="grid-cell"
@@ -96,7 +110,7 @@ function loadingSpinner(loading,accountDetail) {
                   data-grid={{ x: 0, y: 1, w: 1, h: 1 }}
                 >
                   <p>Total recieved</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.totalRecv).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(this.props.accountDetail.totalRecv).toFixed(4))}</h1>
                 </div>  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -104,7 +118,7 @@ function loadingSpinner(loading,accountDetail) {
                   data-grid={{ x: 1, y: 1, w: 1, h: 1 }}
                 >
                   <p>Recieved count</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.recvCount).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(this.props.accountDetail.recvCount).toFixed(4))}</h1>
                 </div>                  
                 <div style={roundedBox}
                   className="grid-cell"
@@ -112,7 +126,7 @@ function loadingSpinner(loading,accountDetail) {
                   data-grid={{ x: 2, y: 1, w: 1, h: 1 }}
                 >
                   <p>Total sent</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.totalSent).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(this.props.accountDetail.totalSent).toFixed(4))}</h1>
                 </div>     
                 <div style={roundedBox}
                   className="grid-cell"
@@ -120,7 +134,7 @@ function loadingSpinner(loading,accountDetail) {
                   data-grid={{ x: 3, y: 1, w: 1, h: 1 }}
                 >
                   <p>Sent count</p>
-                  <h1>{numberWithCommas(parseFloat(accountDetail.sentCount).toFixed(4))}</h1>
+                  <h1>{numberWithCommas(parseFloat(this.props.accountDetail.sentCount).toFixed(4))}</h1>
                 </div>     
                 <div style={roundedBox}
                   className="grid-cell"
@@ -146,9 +160,10 @@ function loadingSpinner(loading,accountDetail) {
                       ))
                     }                  
                 </div>                                                                                                
-            </ResponsiveGridLayout>                          
+            </ResponsiveGridLayout>                         
         </div>
-    )
+      )
+    }
  }
 
  export default AccountDetail 
