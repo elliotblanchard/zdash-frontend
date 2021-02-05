@@ -8,6 +8,7 @@ import cols from '../nivostyles/cols.js'
 import breakpoints from '../nivostyles/breakpoints.js'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 import { connect } from 'react-redux'
+import { fetchUsers } from '../actions/fetchUsers'
 import Spinner from 'react-bootstrap/Spinner'
 
 function numberWithCommas(x) {
@@ -36,8 +37,24 @@ function loadingSpinner(loading,accountDetail) {
 }
 class AccountDetail extends React.Component {
 
-  state = {name: ''}    
+  constructor() {
+    super()
+    this.state = {
+      name: '',
+    }
+  }  
   
+  handleChange = event => {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.fetchUsers(this.state.name, this.props.accountDetail.address)
+  }
+
   render() {
     // Handles the responsive nature of the grid
     const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -61,9 +78,9 @@ class AccountDetail extends React.Component {
                   {loadingSpinner(this.props.loading,this.props.accountDetail)} 
                 </Navbar.Brand> 
                 <Navbar.Collapse className="justify-content-end">
-                <Form inline>
-                  <FormControl type="text" placeholder="Set name" className="mr-sm-2" />
-                  <Button variant="primary">Set</Button>
+                <Form inline onSubmit={ event => this.handleSubmit(event) } >
+                  <FormControl type="text" placeholder="Set name" className="mr-sm-2" onChange={this.handleChange} value={this.state.name} />
+                  <Button variant="primary" type="submit">Set</Button>
                 </Form>                   
               </Navbar.Collapse>                                      
             </Navbar>           
@@ -166,4 +183,4 @@ class AccountDetail extends React.Component {
     }
  }
 
- export default AccountDetail 
+ export default connect(null,{fetchUsers})(AccountDetail)
