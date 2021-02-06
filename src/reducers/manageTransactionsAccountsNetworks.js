@@ -5,6 +5,7 @@ const rootReducer = combineReducers({
     accounts: accountsReducer,
     accountDetail: accountDetailReducer,
     networks: networksReducer,
+    users: usersReducer,
     loading: loadingReducer
   });
    
@@ -96,6 +97,20 @@ function accountDetailReducer(state = {
             return state
     }
   }  
+
+  function usersReducer(state = {
+    name: "",
+    address: ""
+  }, action) {
+    switch (action.type) {       
+        case 'ADD_USERS':
+            return {
+                ...action.payload
+            }
+        default:
+            return state
+    }
+  }
 
   function loadingReducer(state = {
     loading: true

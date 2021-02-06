@@ -8,7 +8,7 @@ import cols from '../nivostyles/cols.js'
 import breakpoints from '../nivostyles/breakpoints.js'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../actions/fetchUsers'
+import { createUser } from '../actions/createUser'
 import Spinner from 'react-bootstrap/Spinner'
 
 function numberWithCommas(x) {
@@ -52,7 +52,7 @@ class AccountDetail extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.fetchUsers(this.state.name, this.props.accountDetail.address)
+    this.props.createUser(this.state.name, this.props.accountDetail.address)
   }
 
   render() {
@@ -183,4 +183,4 @@ class AccountDetail extends React.Component {
     }
  }
 
- export default connect(null,{fetchUsers})(AccountDetail)
+ export default connect(null,{createUser})(AccountDetail)
