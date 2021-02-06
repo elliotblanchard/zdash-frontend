@@ -32,7 +32,7 @@ function loadingSpinner(loading, accountDetail, user) {
 	if (loading.loading === true) {
 		return (<Spinner animation="border" variant="light" />)
 	} else {
-		return (`Address: ${accountDetail.address} (${user.name})`)
+		return (`Address: ${accountDetail.address} ${user.name}`)
 	}
 }
 class AccountDetail extends React.Component {
