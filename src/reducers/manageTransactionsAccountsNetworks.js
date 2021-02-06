@@ -5,7 +5,7 @@ const rootReducer = combineReducers({
     accounts: accountsReducer,
     accountDetail: accountDetailReducer,
     networks: networksReducer,
-    users: usersReducer,
+    user: usersReducer,
     loading: loadingReducer
   });
    

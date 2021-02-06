@@ -9,7 +9,7 @@ export function createUser(name, address) {
             body: JSON.stringify(bodyData),
           })        
           .then(resp => resp.json())
-          .then(users => dispatch({ type: 'ADD_USERS', payload: users }))
+          .then(user => dispatch({ type: 'ADD_USERS', payload: user }))
           .then(loading => dispatch({ type: 'LOADED_FLAG' }))    
     }
  }

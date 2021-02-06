@@ -9,6 +9,6 @@ export function fetchAccountDetail(data) {
        .then(loading => dispatch({ type: 'LOADED_FLAG' }))   
        fetch(`http://localhost:3000/api/v1/users/${data}`)
        .then(resp => resp.json())
-       .then(users => dispatch({ type: 'ADD_USERS', payload: users }))             
+       .then(user => dispatch({ type: 'ADD_USERS', payload: user }))             
     }
  }

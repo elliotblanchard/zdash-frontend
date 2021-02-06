@@ -28,11 +28,11 @@ function truncateArray(arr) {
   }
 }
 
-function loadingSpinner(loading,accountDetail) {
+function loadingSpinner(loading, accountDetail, user) {
 	if (loading.loading === true) {
 		return (<Spinner animation="border" variant="light" />)
 	} else {
-		return (`Address: ${accountDetail.address}`)
+		return (`Address: ${accountDetail.address} (${user.name})`)
 	}
 }
 class AccountDetail extends React.Component {
@@ -75,7 +75,7 @@ class AccountDetail extends React.Component {
         <div>
             <Navbar variant="dark" expand="lg">    
                 <Navbar.Brand href="/">                  
-                  {loadingSpinner(this.props.loading,this.props.accountDetail)} 
+                  {loadingSpinner(this.props.loading,this.props.accountDetail,this.props.user)} 
                 </Navbar.Brand> 
                 <Navbar.Collapse className="justify-content-end">
                 <Form inline onSubmit={ event => this.handleSubmit(event) } >
