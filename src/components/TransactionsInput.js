@@ -9,7 +9,7 @@ import { fetchTransactions } from '../actions/fetchTransactions'
 
 function loadingSpinner(loading,intervalCopy) {
     if (loading.loading === false) {
-        return (`Transactions for previous ${intervalCopy}`)
+        return (`${intervalCopy}`)
     } else {
         return (<Spinner animation="border" variant="light" />)
     }
@@ -43,17 +43,20 @@ class TransactionsInput extends React.Component {
                     const dateObject = new Date(this.props.transactions[0].time * 1000)
                     const longDate = `${dateObject.toLocaleString("en-US", {timeZone: "Europe/London"}, {month: "numeric"})}`
                     const datArr = longDate.split('/')
-                    intervalCopy = `day: ${datArr[0]}/${datArr[1]}`
+                    intervalCopy = `Transactions for previous day: ${datArr[0]}/${datArr[1]}`
                     break
                 case 'week':
-                    intervalCopy = `week: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    intervalCopy = `Transactions for previous week: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                     break
                 case 'month':
-                    intervalCopy = `month: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    intervalCopy = `Transactions for previous month: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                     break
                 case 'year':
-                    intervalCopy = `year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
-                    break                             
+                    intervalCopy = `Transactions for previous year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    break     
+                case 'all':
+                    intervalCopy = `All transactions`
+                    break                                             
                 default:
             }
         return (
@@ -65,6 +68,7 @@ class TransactionsInput extends React.Component {
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      
                         <NavDropdown title="Select time period" id="nav-dropdown">
+                            <NavDropdown.Item value="all" onClick={this.handleClick}>All</NavDropdown.Item>
                             <NavDropdown.Item value="year" onClick={this.handleClick}>Year</NavDropdown.Item>
                             <NavDropdown.Item value="month" onClick={this.handleClick}>Month</NavDropdown.Item>
                             <NavDropdown.Item value="week" onClick={this.handleClick}>Week</NavDropdown.Item>
