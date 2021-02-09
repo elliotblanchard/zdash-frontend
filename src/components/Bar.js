@@ -12,7 +12,7 @@ function Bar(props) {
             * shielding
         */                  
         let keys = []   
-        let data = []
+        let data = []      
         props.transactions.forEach((transaction) => {
             let interval = {}
             interval[transaction.unit] = transaction.display_time
@@ -28,9 +28,9 @@ function Bar(props) {
                 }
             }) 
             data.push(interval)                
-        }) 
+        })
         let uniqueKeys = [...new Set(keys)]
-        uniqueKeys.reverse()
+        uniqueKeys.sort()
         let axisBottom = {
                 tickSize: 5,
                 tickPadding: 5,
