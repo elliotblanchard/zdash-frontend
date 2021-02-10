@@ -13,7 +13,7 @@ class AccountDetailContainer extends React.Component {
     render() {
         return (
             <div>
-                <AccountDetail accountDetail={this.props.accountDetail} loading={this.props.loading} user={this.props.user} />
+                <AccountDetail accountDetail={this.props.accountDetail} loading={this.props.loading} />
             </div>
         )
     }
@@ -22,8 +22,7 @@ class AccountDetailContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         loading: state.loading,         
-        accountDetail: state.accountDetail,
-        user: state.user
+        accountDetail: state.accountDetail
     }
 }
 

@@ -8,7 +8,6 @@ import cols from '../nivostyles/cols.js'
 import breakpoints from '../nivostyles/breakpoints.js'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 import { connect } from 'react-redux'
-import { createUser } from '../actions/createUser'
 import Spinner from 'react-bootstrap/Spinner'
 
 function numberWithCommas(x) {
@@ -32,28 +31,10 @@ function loadingSpinner(loading, accountDetail, user) {
 	if (loading.loading === true) {
 		return (<Spinner animation="border" variant="light" />)
 	} else {
-		return (`Address: ${accountDetail.address} ${user.name}`)
+		return (`Address: ${accountDetail.address}`)
 	}
 }
 class AccountDetail extends React.Component {
-
-  constructor() {
-    super()
-    this.state = {
-      name: '',
-    }
-  }  
-  
-  handleChange = event => {
-    this.setState({
-      name: event.target.value
-    })
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-    this.props.createUser(this.state.name, this.props.accountDetail.address)
-  }
 
   render() {
     // Handles the responsive nature of the grid
@@ -77,11 +58,7 @@ class AccountDetail extends React.Component {
                 <Navbar.Brand href="/">                  
                   {loadingSpinner(this.props.loading,this.props.accountDetail,this.props.user)} 
                 </Navbar.Brand> 
-                <Navbar.Collapse className="justify-content-end">
-                <Form inline onSubmit={ event => this.handleSubmit(event) } >
-                  <FormControl type="text" placeholder="Set name" className="mr-sm-2" onChange={this.handleChange} value={this.state.name} />
-                  <Button variant="primary" type="submit">Set</Button>
-                </Form>                   
+                <Navbar.Collapse className="justify-content-end">                  
               </Navbar.Collapse>                                      
             </Navbar>           
             <ResponsiveGridLayout
@@ -183,4 +160,4 @@ class AccountDetail extends React.Component {
     }
  }
 
- export default connect(null,{createUser})(AccountDetail)
+ export default AccountDetail 
