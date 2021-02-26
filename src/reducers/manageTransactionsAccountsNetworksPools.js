@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
     transactions: transactionsReducer,
+    pools: poolsReducer,
     accounts: accountsReducer,
     accountDetail: accountDetailReducer,
     networks: networksReducer,
@@ -23,6 +24,27 @@ function transactionsReducer(state = [
 ], action) {
     switch (action.type) {       
         case 'ADD_TRANSACTIONS':
+            return [
+                ...action.payload
+            ]
+        default:
+            return state
+    }
+}
+
+function poolsReducer(state = [
+    {
+        pools: [],
+        display_time: "",
+        interval: "",
+        number: 0,
+        time: 0,
+        total: 0,
+        unit: ""
+    }     
+], action) {
+    switch (action.type) {       
+        case 'ADD_POOLS':
             return [
                 ...action.payload
             ]

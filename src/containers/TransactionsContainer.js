@@ -13,7 +13,7 @@ class TransactionsContainer extends React.Component {
     render() {
         return (
             <div> 
-                <Transactions transactions={this.props.transactions}/>                        
+                <Transactions transactions={this.props.transactions} pools={this.props.pools}/>                        
             </div>
         )
     }
@@ -21,7 +21,8 @@ class TransactionsContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        transactions: state.transactions
+        transactions: state.transactions,
+        pools: state.pools
     }
 }
 
