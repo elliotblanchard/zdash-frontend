@@ -11,7 +11,7 @@ import { Responsive, WidthProvider } from 'react-grid-layout'
 // Handles the responsive nature of the grid
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
-const Transactions = ({transactions}) => {
+const Transactions = ({transactions, pools}) => {
 		return (
 			<ResponsiveGridLayout
 			breakpoints={breakpoints}
@@ -25,7 +25,7 @@ const Transactions = ({transactions}) => {
 					data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 				>
 					Fully Shielded: Percentage of Total
-					<Line transactions={transactions} z2zOnly={true}/>
+					<Line transactions={transactions} type={'z2z'}/>
 				</div>			
 				<div style={roundedBox}
 					className="grid-cell"
@@ -33,7 +33,7 @@ const Transactions = ({transactions}) => {
 					data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
 				>
 					All Transactions: Percentage of Total
-					<Line transactions={transactions} z2zOnly={false}/>
+					<Line transactions={transactions} type={'all'}/>
 				</div>			
 				<div style={roundedBox}
 					className="grid-cell"

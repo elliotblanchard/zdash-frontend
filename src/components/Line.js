@@ -12,7 +12,7 @@ function prepData(props)  {
         let categoryData = undefined
         let shieldedTotal = 0
         transactionCategories.forEach((category) => {
-            if (!props.z2zOnly) {
+            if (props.type === 'all') {
                 categoryName = category
                 categoryColor = assignColors(categoryName)
                 if (!categoryHash[categoryName]) {
@@ -23,7 +23,7 @@ function prepData(props)  {
                 const percentage = Number((categoryData[1] / props.transactions[i].total).toFixed(3)*100 )
                 categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})                               
             }
-            else {
+            else if (props.type === 'z2z') {
                 categoryName = 'Fully shielded'
                 categoryColor = '#65E336'   
                 if ( (category === 'sapling shielded') || (category === 'sprout shielded') ) {
@@ -33,7 +33,7 @@ function prepData(props)  {
                 }             
             }            
         })
-        if (props.z2zOnly) { 
+        if (props.type === 'z2z') { 
             if (!categoryHash[categoryName]) {
                 categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
             }
@@ -46,9 +46,9 @@ function prepData(props)  {
 }
 
 function setYScale(props)  {
-    if (props.z2zOnly) { 
+    if (props.type === 'z2z') { 
         return({ type: 'linear', min: '0', max: '50', stacked: false, reverse: false })
-    } else {
+    } else if (props.type === 'all') {
         return({ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false })
     }
 }
@@ -102,7 +102,7 @@ function Line(props) {
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
         pointLabelYOffset={-12}
-        enableArea={false}
+        enableArea={true}
         useMesh={true}
         legends={[
             {
