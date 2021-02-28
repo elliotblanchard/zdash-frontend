@@ -25,7 +25,7 @@ const Transactions = ({transactions, pools}) => {
 					data-grid={{ x: 0, y: 0, w: 4, h: 3 }}
 				>
 					Fully Shielded: Percentage of Total
-					<Line transactions={transactions} type={'z2z'}/>
+					<Line transactions={transactions} pools={pools} type={'z2z'}/>
 				</div>			
 				<div style={roundedBox}
 					className="grid-cell"
@@ -33,7 +33,7 @@ const Transactions = ({transactions, pools}) => {
 					data-grid={{ x: 0, y: 3, w: 4, h: 3 }}
 				>
 					All Transactions: Percentage of Total
-					<Line transactions={transactions} type={'all'}/>
+					<Line transactions={transactions} pools={pools} type={'all'}/>
 				</div>			
 				<div style={roundedBox}
 					className="grid-cell"
@@ -66,7 +66,15 @@ const Transactions = ({transactions, pools}) => {
 				>
 					Totals for Time Period
 					<Pie  transactions={transactions}/>
-				</div>               					             
+				</div>         
+				<div style={roundedBox}
+					className="grid-cell"
+					key="7"
+					data-grid={{ x: 0, y: 18, w: 4, h: 3 }}
+				>
+					Shielded Pool Size
+					<Line transactions={transactions} pools={pools} type={'pool'}/>
+				</div>				      					             
 			</ResponsiveGridLayout>                
 		)	
  }

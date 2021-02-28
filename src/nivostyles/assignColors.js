@@ -19,7 +19,11 @@ function assignColors(categoryName)  {
         case 'shielded coinbase':
             return '#F5A92D'    
         case 'migration':
-            return '#7FA8AD'                             
+            return '#7FA8AD'      
+        case 'sapling pool':
+            return '#52F25D'
+        case 'sprout pool':
+            return '#F21D81'                                                   
         default:
             return '#9BD8E0'                                                                                      
     }

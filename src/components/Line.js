@@ -3,6 +3,7 @@ import { ResponsiveLine } from '@nivo/line'
 import axisColorSettings from '../nivostyles/axisColorSettings.js'
 import assignColors from '../nivostyles/assignColors.js'
 import transactionCategories from '../nivostyles/transactionCategories.js'
+import poolCategories from '../nivostyles/poolCategories.js'
 
 function prepData(props)  {
     let categoryHash = {} 
@@ -11,35 +12,50 @@ function prepData(props)  {
         let categoryColor = ''
         let categoryData = undefined
         let shieldedTotal = 0
-        transactionCategories.forEach((category) => {
-            if (props.type === 'all') {
+        if (props.type === 'pool') {
+            poolCategories.forEach((category) => {
                 categoryName = category
                 categoryColor = assignColors(categoryName)
                 if (!categoryHash[categoryName]) {
                     categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
-                }
-                categoryData = props.transactions[i].categories.find(element => element[0].toLowerCase() === category)
-                if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period 
-                const percentage = Number((categoryData[1] / props.transactions[i].total).toFixed(3)*100 )
-                categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})                               
-            }
-            else if (props.type === 'z2z') {
-                categoryName = 'Fully shielded'
-                categoryColor = '#65E336'   
-                if ( (category === 'sapling shielded') || (category === 'sprout shielded') ) {
+                }   
+                if (props.pools[i]) {
+                    categoryData = props.pools[i].pools.find(element => element[0].toLowerCase() === category)
+                    if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period 
+                    categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:categoryData[1]})   
+                }                 
+            })
+        } else {
+            transactionCategories.forEach((category) => {
+                if (props.type === 'all') {
+                    categoryName = category
+                    categoryColor = assignColors(categoryName)
+                    if (!categoryHash[categoryName]) {
+                        categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
+                    }
                     categoryData = props.transactions[i].categories.find(element => element[0].toLowerCase() === category)
-                    if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period
-                    shieldedTotal += Number(categoryData[1])
-                }             
-            }            
-        })
-        if (props.type === 'z2z') { 
-            if (!categoryHash[categoryName]) {
-                categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
-            }
-            const percentage = Number((shieldedTotal / props.transactions[i].total).toFixed(3)*100 )  
-            categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})     
-        }           
+                    if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period 
+                    const percentage = Number((categoryData[1] / props.transactions[i].total).toFixed(3)*100 )
+                    categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})                               
+                }
+                else if (props.type === 'z2z') {
+                    categoryName = 'Fully shielded'
+                    categoryColor = '#65E336'   
+                    if ( (category === 'sapling shielded') || (category === 'sprout shielded') ) {
+                        categoryData = props.transactions[i].categories.find(element => element[0].toLowerCase() === category)
+                        if (categoryData === undefined) categoryData = [categoryName, "0"] // No data for this category in this time period
+                        shieldedTotal += Number(categoryData[1])
+                    }             
+                }            
+            })
+            if (props.type === 'z2z') { 
+                if (!categoryHash[categoryName]) {
+                    categoryHash[categoryName] = {id:categoryName,color:categoryColor,data:[]}
+                }
+                const percentage = Number((shieldedTotal / props.transactions[i].total).toFixed(3)*100 )  
+                categoryHash[categoryName].data.push({x:props.transactions[i].display_time, y:percentage})     
+            } 
+        }         
     }
 
     return categoryHash
@@ -50,6 +66,33 @@ function setYScale(props)  {
         return({ type: 'linear', min: '0', max: '50', stacked: false, reverse: false })
     } else if (props.type === 'all') {
         return({ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false })
+    }
+}
+
+function setYAxis(props) {
+    let yAxis = ''
+    if (props.type === 'pool') {
+        yAxis = 'size'
+    }
+    else {
+        yAxis = 'percentage'
+    }    
+    return({
+        orient: 'left',
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: yAxis,
+        legendOffset: -60,
+        legendPosition: 'middle'
+    })
+}
+
+function setArea(props) {
+    if (props.type === 'pool') {
+        return true
+    } else {
+        return false
     }
 }
 
@@ -81,18 +124,10 @@ function Line(props) {
             legendOffset: 36,
             legendPosition: 'middle'
         }}
-        axisLeft={{
-            orient: 'left',
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'percentage',
-            legendOffset: -40,
-            legendPosition: 'middle'
-        }}
+        axisLeft = {setYAxis(props)}
         tooltip={({ point, value }) => (
             <span style={{ background: '#334', padding: '10px 10px', fontSize: 14 }}>
-                {point.serieId}: {point.data.yFormatted}%
+                {point.serieId}: {point.data.yFormatted}
             </span>
         )}         
         colors={{ datum: 'color' }}       
@@ -102,7 +137,7 @@ function Line(props) {
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
         pointLabelYOffset={-12}
-        enableArea={true}
+        enableArea={setArea(props)}
         useMesh={true}
         legends={[
             {
