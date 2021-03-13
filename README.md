@@ -1,6 +1,8 @@
 # Zdash: Live analytics for Zcash
 Dashboard for private transactions in the Zcash cryptocurrency
 
+![Zdash](http://invisiblelightnetwork.com/wp-content/uploads/2021/03/zdash_comped.png)
+
 ## Features :sparkles:
 * Only source online for data on all categories of Zcash transactions
 * Live Zcash network data
@@ -20,7 +22,7 @@ Dashboard for private transactions in the Zcash cryptocurrency
   * Scheduled Rake tasks to import latest transaction data
   * [RPCJson](https://rubygems.org/gems/rpcjson) for fast RPC calls to blockchain data
   * [ActiveRecord Import](https://rubygems.org/gems/activerecord-import) for optimized transaction import
-  * 2.2 million+ record PostgreSQL database
+  * 8 million+ record PostgreSQL database
 
 
 ## Get Started
