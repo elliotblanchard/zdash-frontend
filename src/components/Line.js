@@ -99,14 +99,6 @@ function setArea(props) {
 function Line(props) {   
     let data = []
     data = Object.values(prepData(props)) 
-    if (props.type === 'z2z') {
-        console.log('Z2Z')
-    } else if (props.type === 'pool') {
-        console.log('Pool')
-    } else {
-        console.log('Default')
-    }
-    console.log(data) 
     return ( 
         <ResponsiveLine
         data={data}
