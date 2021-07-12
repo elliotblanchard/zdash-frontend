@@ -111,7 +111,7 @@ class AccountDetail extends React.Component {
                   key="6"
                   data-grid={{ x: 1, y: 1, w: 1, h: 1 }}
                 >
-                  <p>Recieved count</p>
+                  <p>Received count</p>
                   <h1>{numberWithCommas(parseFloat(this.props.accountDetail.recvCount).toFixed(4))}</h1>
                 </div>                  
                 <div style={roundedBox}

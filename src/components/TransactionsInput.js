@@ -54,6 +54,9 @@ class TransactionsInput extends React.Component {
                 case 'year':
                     intervalCopy = `Transactions for previous year: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
                     break     
+                case 'three_years':
+                    intervalCopy = `Transactions for previous three years: ${this.props.transactions[0].display_time} to ${this.props.transactions[this.props.transactions.length-1].display_time}`
+                    break                    
                 case 'all':
                     intervalCopy = `All transactions`
                     break                                             
@@ -68,11 +71,12 @@ class TransactionsInput extends React.Component {
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>                      
                         <NavDropdown title="Select time period" id="nav-dropdown">
-                            <NavDropdown.Item value="all" onClick={this.handleClick}>All</NavDropdown.Item>
-                            <NavDropdown.Item value="year" onClick={this.handleClick}>Year</NavDropdown.Item>
-                            <NavDropdown.Item value="month" onClick={this.handleClick}>Month</NavDropdown.Item>
-                            <NavDropdown.Item value="week" onClick={this.handleClick}>Week</NavDropdown.Item>
+                            {/* <NavDropdown.Item value="all" onClick={this.handleClick}>All</NavDropdown.Item> */}
                             <NavDropdown.Item value="day" onClick={this.handleClick}>Day</NavDropdown.Item>
+                            <NavDropdown.Item value="week" onClick={this.handleClick}>Week</NavDropdown.Item>
+                            <NavDropdown.Item value="month" onClick={this.handleClick}>Month</NavDropdown.Item>
+                            <NavDropdown.Item value="year" onClick={this.handleClick}>Year</NavDropdown.Item>
+                            <NavDropdown.Item value="three_years" onClick={this.handleClick}>Three years</NavDropdown.Item>
                         </NavDropdown>   
                         </Nav>                    
                     </Navbar.Collapse>                
